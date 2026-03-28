@@ -1,0 +1,116 @@
+Images expected by index.html — Key Tours
+Generated: 2026-03-27
+Place all files in: ~/.claude/landing-projects/key-tours/images/
+
+────────────────────────────────────────────────────────────────
+REQUIRED IMAGES (11 files)
+────────────────────────────────────────────────────────────────
+
+hero.jpg
+  Dimensions : 1920×1080px minimum (wide landscape)
+  Alt text   : "Rio de Janeiro street scene, golden hour"
+  Usage      : Hero section full-viewport background
+  Notes      : Warm golden-hour grade. Real street or viewpoint, not tourist landmark shot.
+               Preloaded (<link rel="preload">) — use highest quality available.
+               Dark overlay (40%) applied via CSS — image can be a touch lighter than needed.
+
+keyla.jpg
+  Dimensions : 600×800px (portrait orientation)
+  Alt text   : "Keyla Bergamazi, Key Tours guide, Rio de Janeiro"
+  Usage      : About section — left column portrait
+  Notes      : Natural/candid. Warm light. She should look like herself, not posed.
+               Avoid corporate headshot look.
+
+tour-centro.jpg
+  Dimensions : 800×600px (landscape)
+  Alt text   : "City centre and Santa Teresa, Rio de Janeiro tour"
+  Usage      : Tours section — City Centre / Santa Teresa card
+  Notes      : Architecture, culture, streets — not empty tourist shot. People/life preferred.
+
+tour-nature.jpg
+  Dimensions : 800×600px (landscape)
+  Alt text   : "Tijuca Forest, Rio de Janeiro nature tour"
+  Usage      : Tours section — Rio Nature card
+  Notes      : Green, lush, Tijuca. Waterfall or viewpoint preferred over trail shot.
+
+tour-copa.jpg
+  Dimensions : 800×600px (landscape)
+  Alt text   : "Copacabana neighbourhood history tour"
+  Usage      : Tours section — Copacabana card
+  Notes      : Street-level, neighbourhood feel — not the beach from above.
+
+tour-nightlife.jpg
+  Dimensions : 800×600px (landscape)
+  Alt text   : "Rio de Janeiro nightlife tour, Lapa"
+  Usage      : Tours section — Night Life card
+  Notes      : Warm light, music, movement. Lapa arch or samba circle preferred.
+               Must feel alive and joyful, not dark/edgy.
+
+gallery-1.jpg
+  Dimensions : 600×600px (square or crop to square)
+  Alt text   : "Rio de Janeiro cultural tour"
+  Usage      : Gallery section — slot 1
+
+gallery-2.jpg
+  Dimensions : 600×600px
+  Alt text   : "Rio de Janeiro cultural tour"
+  Usage      : Gallery section — slot 2
+
+gallery-3.jpg
+  Dimensions : 600×600px
+  Alt text   : "Rio de Janeiro cultural tour"
+  Usage      : Gallery section — slot 3
+
+gallery-4.jpg
+  Dimensions : 600×600px
+  Alt text   : "Rio de Janeiro cultural tour"
+  Usage      : Gallery section — slot 4
+
+gallery-5.jpg
+  Dimensions : 600×600px
+  Alt text   : "Rio de Janeiro cultural tour"
+  Usage      : Gallery section — slot 5
+
+gallery-6.jpg
+  Dimensions : 600×600px
+  Alt text   : "Rio de Janeiro cultural tour"
+  Usage      : Gallery section — slot 6
+
+────────────────────────────────────────────────────────────────
+OPTIONAL — VIDEO
+────────────────────────────────────────────────────────────────
+
+promo-video.mp4 (or YouTube/Vimeo URL)
+  Usage      : Gallery section — 16:9 video block above photo grid
+  Notes      : Set data-src on .video-placeholder div in index.html once ready.
+               Currently shows placeholder. Luiz editing — ~1 week ETA.
+
+────────────────────────────────────────────────────────────────
+PHOTOGRAPHY DIRECTION
+────────────────────────────────────────────────────────────────
+
+Grade       : Warm, golden. Not oversaturated, not bleached.
+Style       : Candid over posed. People in motion. Real reactions.
+Avoid       : Stock photography, "tourist looking at landmark" shots,
+              cold light, desaturated instagram-filter look,
+              generic aerial drone shots of landmarks.
+Feel        : Natural light, warmth, real Rio life — like @keylario reels.
+
+────────────────────────────────────────────────────────────────
+HOW TO ADD VIDEO (when ready)
+────────────────────────────────────────────────────────────────
+
+1. For direct video file (.mp4):
+   Find this in index.html:
+     <div class="video-placeholder" data-src="">
+   Replace data-src with the relative path:
+     <div class="video-placeholder" data-src="./images/promo-video.mp4">
+
+2. For YouTube embed:
+   Replace the entire .video-placeholder div with:
+     <div style="position:relative;aspect-ratio:16/9;width:100%">
+       <iframe src="https://www.youtube.com/embed/{VIDEO_ID}"
+               style="position:absolute;inset:0;width:100%;height:100%;border:none"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+               allowfullscreen loading="lazy"></iframe>
+     </div>

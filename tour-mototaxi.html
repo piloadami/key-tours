@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experience Rio from the back of a mototaxi — zip through hillside streets, neighbourhood shortcuts, and ridgeline views the way locals actually move.">
+  <title>Rio on Two Wheels — Key Tours Rio</title>
+  <link rel="canonical" href="https://key-tours.netlify.app/tour-mototaxi.html">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="Key Tours Rio">
+  <meta property="og:url"         content="https://key-tours.netlify.app/tour-mototaxi.html">
+  <meta property="og:title"       content="Rio on Two Wheels — Key Tours Rio">
+  <meta property="og:description" content="Experience Rio from the back of a mototaxi — zip through hillside streets, neighbourhood shortcuts, and ridgeline views the way locals actually move.">
+  <meta property="og:image"       content="https://key-tours.netlify.app/images/tour-mototaxi.jpg">
+  <meta property="og:locale"      content="en_US">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": "Rio on Two Wheels — Mototaxi Private Tour",
+    "description": "Experience Rio from the back of a mototaxi — zip through hillside streets, neighbourhood shortcuts, and ridgeline views the way locals actually move.",
+    "url": "https://key-tours.netlify.app/tour-mototaxi.html",
+    "image": "https://key-tours.netlify.app/images/tour-mototaxi.jpg",
+    "provider": { "@type": "TourOperator", "name": "Key Tours Rio", "url": "https://key-tours.netlify.app" },
+    "availableLanguage": ["English", "Portuguese", "Spanish"],
+    "touristType": "Adventure tourism"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@300;400;500;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg:      #F7F0E6;
+      --color-surface: #EDE3D4;
+      --color-text:    #2C1A0E;
+      --color-heading: #1C5035;
+      --color-accent:  #C4622D;
+      --color-muted:   #8C7B6B;
+      --color-border:  #D4C4B0;
+      --color-dark:    #1B4830;
+      --color-white:   #FFFDF9;
+      --font-heading:  'Abril Fatface', Georgia, serif;
+      --font-body:     'DM Sans', system-ui, sans-serif;
+      --font-accent:   'Caveat', cursive;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); line-height: 1.7; }
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .nav-back { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: var(--color-heading); display: flex; align-items: center; gap: 0.4rem; }
+    .nav-back:hover { color: var(--color-accent); }
+    .nav-logo { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-heading); }
+    .lang-toggle { display: flex; gap: 0.25rem; }
+    .lang-toggle button { background: none; border: 1px solid var(--color-border); color: var(--color-muted); font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 3px; cursor: pointer; }
+    .lang-toggle button.lang-btn-active { background: var(--color-heading); color: var(--color-white); border-color: var(--color-heading); }
+    [data-lang] { display: none; }
+    [data-lang].lang-active { display: block; }
+    span[data-lang].lang-active, li[data-lang].lang-active { display: inline; }
+    li[data-lang].lang-active { display: list-item; }
+    .article-hero { position: relative; height: 420px; overflow: hidden; background: #1B2E1A; }
+    @media (min-width: 768px) { .article-hero { height: 520px; } }
+    .article-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
+    .article-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(27,72,48,0.2) 0%, rgba(27,72,48,0.75) 100%); }
+    .article-hero-text { position: absolute; bottom: 2.5rem; left: 0; right: 0; padding: 0 1.5rem; max-width: 760px; margin: 0 auto; }
+    .article-stamp { font-family: var(--font-accent); font-size: 1rem; color: #C8860A; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .article-hero-text h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); color: #F5EDD6; line-height: 1.15; margin-bottom: 0.5rem; }
+    .article-hero-text p { font-size: 1rem; color: rgba(245,237,214,0.85); max-width: 560px; }
+    .article-body { max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+    .article-body h2 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-heading); margin: 2.5rem 0 0.75rem; }
+    .article-body p { font-size: 1rem; color: var(--color-text); margin-bottom: 1.25rem; font-weight: 400; }
+    .article-body p:first-child { font-size: 1.125rem; font-weight: 300; color: #4A2E1A; }
+    .keyla-quote { background: var(--color-surface); border-left: 4px solid var(--color-accent); border-radius: 0 8px 8px 0; padding: 1.5rem 1.75rem; margin: 2.5rem 0; }
+    .keyla-quote blockquote { font-family: var(--font-accent); font-size: 1.3rem; color: var(--color-heading); line-height: 1.5; margin-bottom: 0.5rem; }
+    .keyla-quote cite { font-size: 0.8rem; font-weight: 700; color: var(--color-accent); letter-spacing: 0.08em; text-transform: uppercase; }
+    .highlights { background: var(--color-dark); border-radius: 12px; padding: 2rem; margin: 2.5rem 0; }
+    .highlights h3 { font-family: var(--font-heading); font-size: 1.125rem; color: #C8860A; margin-bottom: 1rem; }
+    .highlights ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1rem; }
+    @media (max-width: 480px) { .highlights ul { grid-template-columns: 1fr; } }
+    .highlights li { color: rgba(245,237,214,0.9); font-size: 0.9rem; padding-left: 1.25rem; position: relative; }
+    .highlights li::before { content: '→'; position: absolute; left: 0; color: var(--color-accent); }
+    .cta-block { background: var(--color-heading); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; margin: 3rem 0 0; }
+    .cta-block h2 { font-family: var(--font-heading); font-size: 1.75rem; color: #F5EDD6; margin-bottom: 0.5rem; }
+    .cta-block p { color: rgba(245,237,214,0.8); font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .wa-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--color-accent); color: var(--color-white); font-family: var(--font-body); font-weight: 700; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 50px; border: none; cursor: pointer; transition: background 0.2s; }
+    .wa-btn:hover { background: #B3541F; }
+    .wa-btn svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+    .footer { background: var(--color-dark); text-align: center; padding: 2rem 1.5rem; }
+    .footer p { color: rgba(245,237,214,0.5); font-size: 0.8rem; }
+    .footer a { color: rgba(245,237,214,0.7); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-back" href="./index.html">← Key Tours</a>
+      <span class="nav-logo">Key Tours</span>
+      <div class="lang-toggle">
+        <button onclick="setLang('EN')" class="lang-btn-active" aria-pressed="true">EN</button>
+        <button onclick="setLang('PT')" aria-pressed="false">PT</button>
+        <button onclick="setLang('ES')" aria-pressed="false">ES</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="article-hero">
+    <img src="./images/tour-mototaxi.jpg" alt="Mototaxi through Rio de Janeiro streets" loading="eager">
+    <div class="article-hero-overlay"></div>
+    <div class="article-hero-text">
+      <div class="article-stamp">Rio de Janeiro ✈</div>
+      <h1>
+        <span data-lang="EN" class="lang-active">Rio on Two Wheels</span>
+        <span data-lang="PT">Rio de Mototáxi</span>
+        <span data-lang="ES">Río en Mototaxi</span>
+      </h1>
+      <p>
+        <span data-lang="EN" class="lang-active">The way locals actually move through this city.</span>
+        <span data-lang="PT">Do jeito que os cariocas realmente se movem pela cidade.</span>
+        <span data-lang="ES">Como se mueven realmente los cariocas por esta ciudad.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="article-body">
+
+    <!-- EN -->
+    <div data-lang="EN" class="lang-active">
+      <p>No tour bus. No van with tinted windows. Just you, Keyla, a helmet, and the back of a mototaxi — weaving through streets, up hillside lanes, along ridgelines with the whole city dropping away below. This is how Rio actually moves, and it's unlike anything else available to visitors.</p>
+
+      <h2>The mototaxi and the city</h2>
+      <p>Mototaxis became essential in Rio in the 1990s, filling the gaps that buses and cars couldn't reach — the steep hillside communities, the narrow lanes threading between houses, the shortcuts that only locals know. In a city built on mountains and valleys, the motorcycle is often the only vehicle that makes sense. Today there are thousands of mototaxi drivers in Rio, each one a navigator of a neighbourhood, a keeper of a mental map that no GPS has fully captured.</p>
+      <p>For most visitors, the mototaxi remains invisible — something seen from the window of a taxi, something that zips past on a hill. Getting on one changes your entire relationship with the city. The scale collapses. Streets that looked like urban sprawl from a distance become distinct neighbourhoods with their own rhythm. You feel the gradient of the hills, the texture of the roads, the temperature change as you rise above the city.</p>
+
+      <h2>The routes no tourist sees</h2>
+      <p>Keyla has been navigating Rio on motos since she was a teenager. She knows which ridgeline gives you the best unobstructed view of both the sea and the bay at once. She knows the drivers — the ones who have been working the same streets for twenty years, who know every pothole and every shortcut, who stop without being asked when something is worth seeing.</p>
+      <p>This tour moves through parts of the city that are simply inaccessible by car: the narrow lanes of hillside communities, the old roads that cut behind the mountains, the spots where Rio reveals itself suddenly — a gap between houses and there's the full bay, or a corner turned and there's the Christ above you, closer than you expected.</p>
+
+      <div class="keyla-quote">
+        <blockquote>"The moto tour is the one people talk about afterwards. It's not comfortable in the way a hotel is comfortable — it's the kind of thing that makes you feel alive. Hold on, lean with the turns, and just watch the city happen around you."</blockquote>
+        <cite>— Keyla, your guide</cite>
+      </div>
+
+      <h2>What to expect</h2>
+      <p>Helmets are provided. Routes are chosen for views, safety, and the kind of street-level detail you simply can't get from inside a vehicle. You'll stop at viewpoints, pass through communities, and move through the city at the pace that the city actually moves at. This tour pairs well with the City Centre & Santa Teresa route — the moto gives you the geography, the walking tour gives you the history.</p>
+
+      <div class="highlights">
+        <h3>What you'll experience</h3>
+        <ul>
+          <li>Hillside community streets</li>
+          <li>Ridgeline viewpoints over the bay</li>
+          <li>Shortcuts only locals know</li>
+          <li>Street-level neighbourhood texture</li>
+          <li>Helmets & safety briefing included</li>
+          <li>Experienced local drivers</li>
+          <li>Hidden panoramic stops</li>
+          <li>Rio's real pace and rhythm</li>
+        </ul>
+      </div>
+
+      <div class="cta-block">
+        <h2>Book this tour</h2>
+        <p>Private · 3–4 hours · Door to door · Up to 4 people</p>
+        <button class="wa-btn" onclick="openWA('EN','moto')">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Message Keyla on WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- PT -->
+    <div data-lang="PT">
+      <p>Sem ônibus de turismo. Sem van com vidros fumê. Só você, a Keyla, um capacete e a garupa de uma mototáxi — cortando ruas, subindo vielas de morro, ao longo de cristas com a cidade inteira se abrindo lá embaixo. É assim que o Rio realmente se move, e é uma experiência diferente de tudo que existe para visitantes.</p>
+
+      <h2>A mototáxi e a cidade</h2>
+      <p>As mototáxis se tornaram essenciais no Rio nos anos 1990, preenchendo as lacunas que ônibus e carros não conseguiam alcançar — as íngremes comunidades nas encostas, as ruelas que se entrelaçam entre as casas, os atalhos que só os moradores conhecem. Em uma cidade construída sobre montanhas e vales, a moto muitas vezes é o único veículo que faz sentido. Hoje há milhares de mototaxistas no Rio, cada um navegador de um bairro, guardião de um mapa mental que nenhum GPS capturou completamente.</p>
+      <p>Para a maioria dos visitantes, a mototáxi permanece invisível — algo visto pela janela de um táxi, algo que passa zumbindo num morro. Subir numa muda completamente a sua relação com a cidade. A escala colapsa. Ruas que pareciam uma expansão urbana genérica à distância se tornam bairros distintos com seu próprio ritmo. Você sente o gradiente dos morros, a textura das estradas, a mudança de temperatura ao subir acima da cidade.</p>
+
+      <h2>As rotas que nenhum turista vê</h2>
+      <p>Keyla navega o Rio de moto desde adolescente. Ela sabe qual crista oferece a melhor vista desobstruída do mar e da baía ao mesmo tempo. Ela conhece os mototaxistas — os que trabalham nas mesmas ruas há vinte anos, que conhecem cada buraco e cada atalho, que param sem precisar pedir quando algo merece ser visto.</p>
+      <p>Este tour percorre partes da cidade simplesmente inacessíveis de carro: as vielas das comunidades nas encostas, as estradas antigas que cortam por trás das montanhas, os pontos onde o Rio se revela de repente — uma fresta entre casas e lá está a baía inteira, ou uma esquina virada e lá está o Cristo acima de você, mais perto do que esperava.</p>
+
+      <div class="keyla-quote">
+        <blockquote>"O tour de moto é o que as pessoas comentam depois. Não é confortável do jeito que um hotel é confortável — é o tipo de coisa que faz você se sentir vivo. Segura firme, acompanha as curvas, e só observa a cidade acontecer ao redor de você."</blockquote>
+        <cite>— Keyla, sua guia</cite>
+      </div>
+
+      <h2>O que esperar</h2>
+      <p>Capacetes são fornecidos. As rotas são escolhidas pelas vistas, segurança e pelo tipo de detalhe ao nível da rua que você simplesmente não consegue de dentro de um veículo. Você vai parar em mirantes, passar por comunidades, e se mover pela cidade no ritmo que a cidade realmente se move. Este tour combina bem com o roteiro do Centro & Santa Teresa — a moto te dá a geografia, o tour a pé te dá a história.</p>
+
+      <div class="highlights">
+        <h3>O que você vai experienciar</h3>
+        <ul>
+          <li>Ruelas de comunidades nas encostas</li>
+          <li>Mirantes nas cristas sobre a baía</li>
+          <li>Atalhos que só os moradores conhecem</li>
+          <li>A textura dos bairros ao nível da rua</li>
+          <li>Capacetes e orientação de segurança</li>
+          <li>Mototaxistas experientes e locais</li>
+          <li>Paradas panorâmicas escondidas</li>
+          <li>O ritmo real do Rio</li>
+        </ul>
+      </div>
+
+      <div class="cta-block">
+        <h2>Reserve este tour</h2>
+        <p>Privado · 3–4 horas · Buscamos você · Até 4 pessoas</p>
+        <button class="wa-btn" onclick="openWA('PT','moto')">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Fale com a Keyla no WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- ES -->
+    <div data-lang="ES">
+      <p>Sin autobús turístico. Sin furgoneta con ventanas tintadas. Solo tú, Keyla, un casco y el asiento trasero de una mototaxi — zigzagueando por calles, subiendo callejones de ladera, a lo largo de crestas con toda la ciudad cayendo a tus pies. Así es como Río se mueve realmente, y es diferente a cualquier cosa disponible para visitantes.</p>
+
+      <h2>La mototaxi y la ciudad</h2>
+      <p>Las mototaxis se volvieron esenciales en Río en los años 90, llenando los huecos que los autobuses y coches no podían alcanzar — las empinadas comunidades en las laderas, los callejones que se entrelazan entre las casas, los atajos que solo conocen los locales. En una ciudad construida sobre montañas y valles, la moto a menudo es el único vehículo que tiene sentido. Hoy hay miles de mototaxistas en Río, cada uno navegador de un barrio, guardián de un mapa mental que ningún GPS ha capturado completamente.</p>
+      <p>Para la mayoría de los visitantes, la mototaxi permanece invisible — algo visto desde la ventana de un taxi, algo que pasa zumbando en una ladera. Subirse a una cambia completamente tu relación con la ciudad. La escala se derrumba. Calles que parecían una expansión urbana genérica a distancia se convierten en barrios distintos con su propio ritmo. Sientes el gradiente de las colinas, la textura de los caminos, el cambio de temperatura al ascender sobre la ciudad.</p>
+
+      <h2>Las rutas que ningún turista ve</h2>
+      <p>Keyla lleva navegando Río en moto desde adolescente. Sabe qué cresta ofrece la mejor vista sin obstáculos del mar y la bahía al mismo tiempo. Conoce a los conductores — los que llevan trabajando las mismas calles veinte años, que conocen cada bache y cada atajo, que se detienen sin que se los pidas cuando algo merece verse.</p>
+      <p>Este tour recorre partes de la ciudad simplemente inaccesibles en coche: los callejones de las comunidades en las laderas, los caminos antiguos que cortan detrás de las montañas, los puntos donde Río se revela de repente — una brecha entre casas y ahí está la bahía entera, o una esquina girada y ahí está el Cristo sobre ti, más cerca de lo que esperabas.</p>
+
+      <div class="keyla-quote">
+        <blockquote>"El tour en moto es el que la gente comenta después. No es cómodo como lo es un hotel — es el tipo de cosa que te hace sentir vivo. Agárrate, acompaña las curvas, y simplemente observa cómo la ciudad sucede a tu alrededor."</blockquote>
+        <cite>— Keyla, tu guía</cite>
+      </div>
+
+      <h2>Qué esperar</h2>
+      <p>Los cascos están incluidos. Las rutas se eligen por las vistas, la seguridad y el tipo de detalle a nivel de calle que simplemente no puedes obtener desde dentro de un vehículo. Pararás en miradores, pasarás por comunidades y te moverás por la ciudad al ritmo que la ciudad realmente se mueve. Este tour combina bien con la ruta del Centro & Santa Teresa — la moto te da la geografía, el tour a pie te da la historia.</p>
+
+      <div class="highlights">
+        <h3>Lo que vas a experimentar</h3>
+        <ul>
+          <li>Callejones de comunidades en las laderas</li>
+          <li>Miradores en las crestas sobre la bahía</li>
+          <li>Atajos que solo conocen los locales</li>
+          <li>Textura de los barrios a nivel de calle</li>
+          <li>Cascos y briefing de seguridad incluidos</li>
+          <li>Conductores locales experimentados</li>
+          <li>Paradas panorámicas escondidas</li>
+          <li>El ritmo real de Río</li>
+        </ul>
+      </div>
+
+      <div class="cta-block">
+        <h2>Reserva este tour</h2>
+        <p>Privado · 3–4 horas · Puerta a puerta · Hasta 4 personas</p>
+        <button class="wa-btn" onclick="openWA('ES','moto')">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escríbele a Keyla por WhatsApp
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 Key Tours Rio — <a href="./index.html">Back to home</a></p>
+  </footer>
+
+  <script>
+    const WA_NUMBER = '5521996763901';
+    const WA_MESSAGES = {
+      moto: {
+        EN: "Hi Keyla! I'm interested in the Mototaxi tour 🏍️",
+        PT: "Olá Keyla! Tenho interesse no tour de Mototáxi 🏍️",
+        ES: "Hola Keyla! Me interesa el tour en Mototaxi 🏍️"
+      }
+    };
+    function openWA(lang, tour) {
+      const msg = WA_MESSAGES[tour][lang];
+      window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    }
+    function setLang(lang) {
+      localStorage.setItem('kt-lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('lang-active', el.dataset.lang === lang);
+      });
+      document.querySelectorAll('.lang-toggle button').forEach(btn => {
+        const active = btn.textContent.trim() === lang;
+        btn.classList.toggle('lang-btn-active', active);
+        btn.setAttribute('aria-pressed', active);
+      });
+    }
+    (function() {
+      const saved = localStorage.getItem('kt-lang') || 'EN';
+      if (saved !== 'EN') setLang(saved);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Tijuca Forest — one of the world's largest urban forests — with Keyla, a native guide who grew up hiking these trails.">
+  <title>Rio Nature — Key Tours Rio</title>
+  <link rel="canonical" href="https://key-tours.netlify.app/tour-nature.html">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="Key Tours Rio">
+  <meta property="og:url"         content="https://key-tours.netlify.app/tour-nature.html">
+  <meta property="og:title"       content="Rio Nature — Key Tours Rio">
+  <meta property="og:description" content="Explore Tijuca Forest — one of the world's largest urban forests — with Keyla, a native guide who grew up hiking these trails.">
+  <meta property="og:image"       content="https://key-tours.netlify.app/images/tour-nature.jpg">
+  <meta property="og:locale"      content="en_US">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": "Rio Nature — Private Tour",
+    "description": "Explore Tijuca Forest — one of the world's largest urban forests — with Keyla, a native guide who grew up hiking these trails.",
+    "url": "https://key-tours.netlify.app/tour-nature.html",
+    "image": "https://key-tours.netlify.app/images/tour-nature.jpg",
+    "provider": { "@type": "TourOperator", "name": "Key Tours Rio", "url": "https://key-tours.netlify.app" },
+    "availableLanguage": ["English", "Portuguese", "Spanish"],
+    "touristType": "Nature tourism"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@300;400;500;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg:      #F7F0E6;
+      --color-surface: #EDE3D4;
+      --color-text:    #2C1A0E;
+      --color-heading: #1C5035;
+      --color-accent:  #C4622D;
+      --color-muted:   #8C7B6B;
+      --color-border:  #D4C4B0;
+      --color-dark:    #1B4830;
+      --color-white:   #FFFDF9;
+      --font-heading:  'Abril Fatface', Georgia, serif;
+      --font-body:     'DM Sans', system-ui, sans-serif;
+      --font-accent:   'Caveat', cursive;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); line-height: 1.7; }
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .nav-back { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: var(--color-heading); display: flex; align-items: center; gap: 0.4rem; }
+    .nav-back:hover { color: var(--color-accent); }
+    .nav-logo { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-heading); }
+    .lang-toggle { display: flex; gap: 0.25rem; }
+    .lang-toggle button { background: none; border: 1px solid var(--color-border); color: var(--color-muted); font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 3px; cursor: pointer; }
+    .lang-toggle button.lang-btn-active { background: var(--color-heading); color: var(--color-white); border-color: var(--color-heading); }
+    [data-lang] { display: none; }
+    [data-lang].lang-active { display: block; }
+    span[data-lang].lang-active, li[data-lang].lang-active { display: inline; }
+    li[data-lang].lang-active { display: list-item; }
+    .article-hero { position: relative; height: 420px; overflow: hidden; }
+    @media (min-width: 768px) { .article-hero { height: 520px; } }
+    .article-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+    .article-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(27,72,48,0.2) 0%, rgba(27,72,48,0.7) 100%); }
+    .article-hero-text { position: absolute; bottom: 2.5rem; left: 0; right: 0; padding: 0 1.5rem; max-width: 760px; margin: 0 auto; }
+    .article-stamp { font-family: var(--font-accent); font-size: 1rem; color: #C8860A; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .article-hero-text h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); color: #F5EDD6; line-height: 1.15; margin-bottom: 0.5rem; }
+    .article-hero-text p { font-size: 1rem; color: rgba(245,237,214,0.85); max-width: 560px; }
+    .article-body { max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+    .article-body h2 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-heading); margin: 2.5rem 0 0.75rem; }
+    .article-body p { font-size: 1rem; color: var(--color-text); margin-bottom: 1.25rem; font-weight: 400; }
+    .article-body p:first-child { font-size: 1.125rem; font-weight: 300; color: #4A2E1A; }
+    .keyla-quote { background: var(--color-surface); border-left: 4px solid var(--color-accent); border-radius: 0 8px 8px 0; padding: 1.5rem 1.75rem; margin: 2.5rem 0; }
+    .keyla-quote blockquote { font-family: var(--font-accent); font-size: 1.3rem; color: var(--color-heading); line-height: 1.5; margin-bottom: 0.5rem; }
+    .keyla-quote cite { font-size: 0.8rem; font-weight: 700; color: var(--color-accent); letter-spacing: 0.08em; text-transform: uppercase; }
+    .highlights { background: var(--color-dark); border-radius: 12px; padding: 2rem; margin: 2.5rem 0; }
+    .highlights h3 { font-family: var(--font-heading); font-size: 1.125rem; color: #C8860A; margin-bottom: 1rem; }
+    .highlights ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1rem; }
+    @media (max-width: 480px) { .highlights ul { grid-template-columns: 1fr; } }
+    .highlights li { color: rgba(245,237,214,0.9); font-size: 0.9rem; padding-left: 1.25rem; position: relative; }
+    .highlights li::before { content: '→'; position: absolute; left: 0; color: var(--color-accent); }
+    .cta-block { background: var(--color-heading); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; margin: 3rem 0 0; }
+    .cta-block h2 { font-family: var(--font-heading); font-size: 1.75rem; color: #F5EDD6; margin-bottom: 0.5rem; }
+    .cta-block p { color: rgba(245,237,214,0.8); font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .wa-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--color-accent); color: var(--color-white); font-family: var(--font-body); font-weight: 700; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 50px; border: none; cursor: pointer; transition: background 0.2s; }
+    .wa-btn:hover { background: #B3541F; }
+    .wa-btn svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+    .footer { background: var(--color-dark); text-align: center; padding: 2rem 1.5rem; }
+    .footer p { color: rgba(245,237,214,0.5); font-size: 0.8rem; }
+    .footer a { color: rgba(245,237,214,0.7); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-back" href="./index.html">← Key Tours</a>
+      <span class="nav-logo">Key Tours</span>
+      <div class="lang-toggle">
+        <button onclick="setLang('EN')" class="lang-btn-active" aria-pressed="true">EN</button>
+        <button onclick="setLang('PT')" aria-pressed="false">PT</button>
+        <button onclick="setLang('ES')" aria-pressed="false">ES</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="article-hero">
+    <img src="./images/tour-nature.jpg" alt="Tijuca Forest, Rio de Janeiro" loading="eager">
+    <div class="article-hero-overlay"></div>
+    <div class="article-hero-text">
+      <div class="article-stamp">Rio de Janeiro ✈</div>
+      <h1>
+        <span data-lang="EN" class="lang-active">Rio Nature</span>
+        <span data-lang="PT">Natureza Carioca</span>
+        <span data-lang="ES">Naturaleza Carioca</span>
+      </h1>
+      <p>
+        <span data-lang="EN" class="lang-active">Into Tijuca Forest, the lungs of the city.</span>
+        <span data-lang="PT">Dentro da Floresta da Tijuca, o pulmão da cidade.</span>
+        <span data-lang="ES">Dentro de la Floresta de Tijuca, el pulmón de la ciudad.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="article-body">
+
+    <!-- EN -->
+    <div data-lang="EN" class="lang-active">
+      <p>There is a rainforest inside Rio de Janeiro. Not near it, not beside it — inside it, wrapped around the mountain spine that runs through the city's heart. Tijuca Forest covers 32 square kilometres of Atlantic rainforest, making it one of the largest urban forests in the world. And it shouldn't exist at all.</p>
+
+      <h2>The forest that humans destroyed — and rebuilt</h2>
+      <p>In the 17th and 18th centuries these mountains were stripped bare for sugar and coffee plantations. By the 1840s Rio de Janeiro was running out of water — the rivers had dried up and the city was in crisis. Emperor Dom Pedro II made a remarkable decision: replant the entire mountain range. Between 1861 and 1874, under the direction of Major Manuel Gomes Archer, workers replanted the slopes by hand with native Atlantic Forest species. The gamble worked. The rivers returned. The city's water supply recovered. The forest grew.</p>
+      <p>Today Tijuca shelters over 300 bird species, jaguarundi, ocelots, golden lion tamarins, and hundreds of orchid varieties. The Cascatinha Taunay waterfall — painted by European landscape artists in the 1800s — still flows through the same valley. And from the summit of Pico da Tijuca, at 1,021 metres, you can see the full sweep of the city laid out below: Guanabara Bay, the beaches, the islands, the horizon.</p>
+
+      <h2>The city hiding inside the forest</h2>
+      <p>What most visitors miss is that the forest is not just nature — it's memory. The ruins of old coffee fazendas are still visible on certain trails. The Mayrink Chapel in the forest interior contains panels painted by Cândido Portinari, Brazil's most celebrated 20th-century artist. The forest roads were designed as a 19th-century leisure circuit for the Imperial court — a Sunday drive through the wilderness. You're walking through a landscape shaped by three different centuries of human intention.</p>
+
+      <div class="keyla-quote">
+        <blockquote>"I grew up hiking these trails with my family. My uncle knows every waterfall. I can take you to places that don't appear on any tourist map — paths where you hear the city disappear completely within five minutes of walking."</blockquote>
+        <cite>— Keyla, your guide</cite>
+      </div>
+
+      <h2>A different side of Rio</h2>
+      <p>Most visitors to Rio never make it into the forest. It's one of the best-kept secrets of the city — an hour from the beach, a world away. Keyla grew up here. She knows which trails have the best waterfall swimming, where to watch for toucans at dawn, and which viewpoint gives you a angle of Christ the Redeemer that nobody photographs.</p>
+
+      <div class="highlights">
+        <h3>What you'll experience</h3>
+        <ul>
+          <li>Cascatinha Taunay waterfall</li>
+          <li>Pico da Tijuca panoramic viewpoint</li>
+          <li>Native wildlife spotting</li>
+          <li>Vista Chinesa lookout</li>
+          <li>Mayrink Chapel & Portinari panels</li>
+          <li>Hidden forest trails</li>
+          <li>Atlantic Forest ecology</li>
+          <li>Unique angle of Christ the Redeemer</li>
+        </ul>
+      </div>
+
+      <div class="cta-block">
+        <h2>Book this tour</h2>
+        <p>Private · 5 hours · Door to door · Up to 6 people</p>
+        <button class="wa-btn" onclick="openWA('EN','nature')">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Message Keyla on WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- PT -->
+    <div data-lang="PT">
+      <p>Existe uma floresta tropical dentro do Rio de Janeiro. Não perto — dentro, enrolada na espinha dorsal montanhosa que atravessa o coração da cidade. A Floresta da Tijuca cobre 32 quilômetros quadrados de Mata Atlântica, tornando-a uma das maiores florestas urbanas do mundo. E ela não deveria existir.</p>
+
+      <h2>A floresta que os humanos destruíram — e reconstruíram</h2>
+      <p>Nos séculos XVII e XVIII, essas montanhas foram desmatadas para plantações de açúcar e café. Na década de 1840, o Rio de Janeiro estava ficando sem água — os rios haviam secado e a cidade estava em crise. O Imperador Dom Pedro II tomou uma decisão notável: reflorestar toda a cadeia montanhosa. Entre 1861 e 1874, sob a direção do Major Manuel Gomes Archer, trabalhadores replantaram as encostas à mão com espécies nativas da Mata Atlântica. A aposta funcionou. Os rios voltaram. O abastecimento de água da cidade se recuperou. A floresta cresceu.</p>
+      <p>Hoje a Tijuca abriga mais de 300 espécies de aves, jaguarundis, gatos-maracajás, micos-leões-dourados e centenas de variedades de orquídeas. A Cascatinha Taunay — pintada por artistas paisagistas europeus no século XIX — ainda flui pelo mesmo vale. E do cume do Pico da Tijuca, a 1.021 metros, você pode ver toda a cidade estendida abaixo: a Baía de Guanabara, as praias, as ilhas, o horizonte.</p>
+
+      <h2>A cidade escondida dentro da floresta</h2>
+      <p>O que a maioria dos visitantes não percebe é que a floresta não é apenas natureza — é memória. As ruínas de antigas fazendas de café ainda são visíveis em certas trilhas. A Capela Mayrink no interior da floresta contém painéis pintados por Cândido Portinari, o mais celebrado artista brasileiro do século XX. As estradas da floresta foram projetadas como um circuito de lazer do século XIX para a corte imperial. Você está caminhando por uma paisagem moldada por três séculos diferentes de intenção humana.</p>
+
+      <div class="keyla-quote">
+        <blockquote>"Cresci fazendo trilhas aqui com minha família. Meu tio conhece cada cachoeira. Posso te levar a lugares que não aparecem em nenhum mapa turístico — trilhas onde você ouve a cidade desaparecer completamente em cinco minutos de caminhada."</blockquote>
+        <cite>— Keyla, sua guia</cite>
+      </div>
+
+      <h2>Um lado diferente do Rio</h2>
+      <p>A maioria dos visitantes do Rio nunca entra na floresta. É um dos segredos mais bem guardados da cidade — a uma hora da praia, um mundo completamente diferente. Keyla cresceu aqui. Ela sabe quais trilhas têm as melhores cachoeiras para nadar, onde observar tucanos ao amanhecer, e qual mirante oferece um ângulo do Cristo Redentor que ninguém fotografa.</p>
+
+      <div class="highlights">
+        <h3>O que você vai experienciar</h3>
+        <ul>
+          <li>Cascatinha Taunay</li>
+          <li>Mirante do Pico da Tijuca</li>
+          <li>Observação de fauna nativa</li>
+          <li>Vista Chinesa</li>
+          <li>Capela Mayrink e painéis de Portinari</li>
+          <li>Trilhas escondidas na floresta</li>
+          <li>Ecologia da Mata Atlântica</li>
+          <li>Ângulo único do Cristo Redentor</li>
+        </ul>
+      </div>
+
+      <div class="cta-block">
+        <h2>Reserve este tour</h2>
+        <p>Privado · 5 horas · Buscamos você · Até 6 pessoas</p>
+        <button class="wa-btn" onclick="openWA('PT','nature')">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Fale com a Keyla no WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- ES -->
+    <div data-lang="ES">
+      <p>Hay una selva tropical dentro de Río de Janeiro. No cerca — dentro, envuelta en la columna vertebral montañosa que atraviesa el corazón de la ciudad. La Floresta de Tijuca cubre 32 kilómetros cuadrados de Mata Atlántica, convirtiéndola en uno de los bosques urbanos más grandes del mundo. Y no debería existir.</p>
+
+      <h2>El bosque que los humanos destruyeron — y reconstruyeron</h2>
+      <p>En los siglos XVII y XVIII estas montañas fueron taladas para plantaciones de azúcar y café. En la década de 1840 Río de Janeiro se estaba quedando sin agua — los ríos se habían secado y la ciudad estaba en crisis. El Emperador Dom Pedro II tomó una decisión notable: reforestar toda la cadena montañosa. Entre 1861 y 1874, bajo la dirección del Mayor Manuel Gomes Archer, los trabajadores replantaron las laderas a mano con especies nativas de la Mata Atlántica. La apuesta funcionó. Los ríos regresaron. El suministro de agua de la ciudad se recuperó. El bosque creció.</p>
+      <p>Hoy Tijuca alberga más de 300 especies de aves, yaguarundis, ocelotes, micos leones dorados y cientos de variedades de orquídeas. La cascada Cascatinha Taunay — pintada por artistas paisajistas europeos en el siglo XIX — sigue fluyendo por el mismo valle. Y desde la cima del Pico da Tijuca, a 1.021 metros, puedes ver toda la ciudad desplegada abajo: la Bahía de Guanabara, las playas, las islas, el horizonte.</p>
+
+      <h2>La ciudad escondida dentro del bosque</h2>
+      <p>Lo que la mayoría de los visitantes no percibe es que el bosque no es solo naturaleza — es memoria. Las ruinas de antiguas haciendas cafetaleras todavía son visibles en ciertos senderos. La Capilla Mayrink en el interior del bosque contiene paneles pintados por Cândido Portinari, el más celebrado artista brasileño del siglo XX. Los caminos del bosque fueron diseñados como un circuito de ocio del siglo XIX para la corte imperial. Estás caminando por un paisaje moldeado por tres siglos diferentes de intención humana.</p>
+
+      <div class="keyla-quote">
+        <blockquote>"Crecí haciendo senderismo aquí con mi familia. Mi tío conoce cada cascada. Puedo llevarte a lugares que no aparecen en ningún mapa turístico — senderos donde escuchas desaparecer la ciudad completamente en cinco minutos de caminata."</blockquote>
+        <cite>— Keyla, tu guía</cite>
+      </div>
+
+      <h2>Un lado diferente de Río</h2>
+      <p>La mayoría de los visitantes de Río nunca entran al bosque. Es uno de los secretos mejor guardados de la ciudad — a una hora de la playa, un mundo completamente diferente. Keyla creció aquí. Sabe qué senderos tienen las mejores cascadas para nadar, dónde observar tucanes al amanecer, y qué mirador ofrece un ángulo del Cristo Redentor que nadie fotografía.</p>
+
+      <div class="highlights">
+        <h3>Lo que vas a experimentar</h3>
+        <ul>
+          <li>Cascada Cascatinha Taunay</li>
+          <li>Mirador del Pico da Tijuca</li>
+          <li>Avistamiento de fauna nativa</li>
+          <li>Vista Chinesa</li>
+          <li>Capilla Mayrink y paneles de Portinari</li>
+          <li>Senderos escondidos en el bosque</li>
+          <li>Ecología de la Mata Atlántica</li>
+          <li>Ángulo único del Cristo Redentor</li>
+        </ul>
+      </div>
+
+      <div class="cta-block">
+        <h2>Reserva este tour</h2>
+        <p>Privado · 5 horas · Puerta a puerta · Hasta 6 personas</p>
+        <button class="wa-btn" onclick="openWA('ES','nature')">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escríbele a Keyla por WhatsApp
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 Key Tours Rio — <a href="./index.html">Back to home</a></p>
+  </footer>
+
+  <script>
+    const WA_NUMBER = '5521996763901';
+    const WA_MESSAGES = {
+      nature: {
+        EN: "Hi Keyla! I'm interested in the Rio Nature / Tijuca Forest tour 🌿",
+        PT: "Olá Keyla! Tenho interesse no tour Natureza Carioca 🌿",
+        ES: "Hola Keyla! Me interesa el tour Naturaleza Carioca 🌿"
+      }
+    };
+    function openWA(lang, tour) {
+      const msg = WA_MESSAGES[tour][lang];
+      window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    }
+    function setLang(lang) {
+      localStorage.setItem('kt-lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('lang-active', el.dataset.lang === lang);
+      });
+      document.querySelectorAll('.lang-toggle button').forEach(btn => {
+        const active = btn.textContent.trim() === lang;
+        btn.classList.toggle('lang-btn-active', active);
+        btn.setAttribute('aria-pressed', active);
+      });
+    }
+    (function() {
+      const saved = localStorage.getItem('kt-lang') || 'EN';
+      if (saved !== 'EN') setLang(saved);
+    })();
+  </script>
+</body>
+</html>
