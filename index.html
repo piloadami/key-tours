@@ -462,6 +462,7 @@
       display: flex;
       flex-direction: column;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
       box-shadow:
         0 2px 4px rgba(44,26,14,0.04),
         0 6px 16px rgba(44,26,14,0.06);
@@ -515,6 +516,24 @@
     }
     .tour-name a { color: inherit; text-decoration: none; transition: color 0.2s; }
     .tour-name a:hover { color: var(--color-accent); }
+    /* Full-card click — stretch link over entire card */
+    .tour-name a::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+    /* Explore link sits above the overlay */
+    .tour-explore {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      transition: gap 0.2s;
+    }
+    .tour-card:hover .tour-explore { gap: 0.6rem; }
     .tour-meta {
       font-size: var(--text-xs);
       font-weight: 700;
@@ -1185,6 +1204,11 @@
               <span data-lang="PT">5 horas · Privado · Buscamos você</span>
               <span data-lang="ES">5 horas · Privado · Puerta a puerta</span>
             </p>
+            <p class="tour-explore">
+              <span data-lang="EN" class="lang-active">Explore this tour →</span>
+              <span data-lang="PT">Ver este passeio →</span>
+              <span data-lang="ES">Ver este tour →</span>
+            </p>
           </div>
         </article>
 
@@ -1214,6 +1238,11 @@
               <span data-lang="PT">5 horas · Privado · Buscamos você</span>
               <span data-lang="ES">5 horas · Privado · Puerta a puerta</span>
             </p>
+            <p class="tour-explore">
+              <span data-lang="EN" class="lang-active">Explore this tour →</span>
+              <span data-lang="PT">Ver este passeio →</span>
+              <span data-lang="ES">Ver este tour →</span>
+            </p>
           </div>
         </article>
 
@@ -1239,6 +1268,11 @@
               <span data-lang="PT">5 horas · Privado · Buscamos você</span>
               <span data-lang="ES">5 horas · Privado · Puerta a puerta</span>
             </p>
+            <p class="tour-explore">
+              <span data-lang="EN" class="lang-active">Explore this tour →</span>
+              <span data-lang="PT">Ver este passeio →</span>
+              <span data-lang="ES">Ver este tour →</span>
+            </p>
           </div>
         </article>
 
@@ -1263,6 +1297,11 @@
               <span data-lang="EN" class="lang-active">5 hours · Private · Door to door</span>
               <span data-lang="PT">5 horas · Privado · Buscamos você</span>
               <span data-lang="ES">5 horas · Privado · Puerta a puerta</span>
+            </p>
+            <p class="tour-explore">
+              <span data-lang="EN" class="lang-active">Explore this tour →</span>
+              <span data-lang="PT">Ver este passeio →</span>
+              <span data-lang="ES">Ver este tour →</span>
             </p>
           </div>
         </article>
@@ -1292,6 +1331,11 @@
               <span data-lang="EN" class="lang-active">3–4 hours · Private · Door to door · Up to 2 people</span>
               <span data-lang="PT">3–4 horas · Privado · Buscamos você · Até 2 pessoas</span>
               <span data-lang="ES">3–4 horas · Privado · Puerta a puerta · Hasta 2 personas</span>
+            </p>
+            <p class="tour-explore">
+              <span data-lang="EN" class="lang-active">Explore this tour →</span>
+              <span data-lang="PT">Ver este passeio →</span>
+              <span data-lang="ES">Ver este tour →</span>
             </p>
           </div>
         </article>
