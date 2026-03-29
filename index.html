@@ -638,38 +638,6 @@
        GALLERY + VIDEO
     ══════════════════════════════════════════ */
     .gallery { background: var(--color-bg); }
-    .video-wrapper {
-      aspect-ratio: 16/9;
-      max-width: 900px;
-      margin: 0 auto var(--space-10);
-      background: var(--color-surface);
-      overflow: hidden;
-      position: relative;
-    }
-    .video-wrapper video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .video-placeholder-label {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-2);
-      color: var(--color-muted);
-    }
-    .video-placeholder-label svg {
-      width: 48px; height: 48px;
-      opacity: 0.4;
-    }
-    .video-placeholder-label span {
-      font-size: var(--text-sm);
-      font-weight: 300;
-      letter-spacing: 0.05em;
-    }
     .gallery-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1452,24 +1420,6 @@
   ════════════════════════════════════════════ -->
   <section class="gallery section-pad" aria-label="Photo gallery">
     <div class="container">
-      <!-- Video — replace src with actual file or embed -->
-      <div class="video-wrapper" role="region" aria-label="Tour video">
-        <video controls poster="./images/hero.jpg" preload="none" aria-label="Key Tours promo video">
-          <source data-src="./images/promo-video.mov" type="video/mp4">
-          <!-- Replace data-src with src when video is ready -->
-        </video>
-        <div class="video-placeholder-label" id="video-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
-          </svg>
-          <span>
-            <span data-lang="EN" class="lang-active">Video coming soon</span>
-            <span data-lang="PT">Vídeo em breve</span>
-            <span data-lang="ES">Vídeo próximamente</span>
-          </span>
-        </div>
-      </div>
-
       <div class="gallery-grid" role="list">
         <div class="gallery-item" role="listitem">
           <img src="./images/gallery-1.jpg" alt="Inside Catedral Metropolitana, Rio de Janeiro" loading="lazy">
@@ -1540,9 +1490,14 @@
         <span data-lang="ES">Escribir por WhatsApp →</span>
       </button>
       <p class="contact-secondary">
-        <span data-lang="EN" class="lang-active">Or reach out on Instagram: <a href="https://instagram.com/keylario" target="_blank" rel="noopener">@keylario</a></span>
-        <span data-lang="PT">Ou me encontra no Instagram: <a href="https://instagram.com/keylario" target="_blank" rel="noopener">@keylario</a></span>
-        <span data-lang="ES">O encuéntrame en Instagram: <a href="https://instagram.com/keylario" target="_blank" rel="noopener">@keylario</a></span>
+        <span data-lang="EN" class="lang-active">Or email: <a href="mailto:keyla.freireds@gmail.com">keyla.freireds@gmail.com</a></span>
+        <span data-lang="PT">Ou por e-mail: <a href="mailto:keyla.freireds@gmail.com">keyla.freireds@gmail.com</a></span>
+        <span data-lang="ES">O por correo: <a href="mailto:keyla.freireds@gmail.com">keyla.freireds@gmail.com</a></span>
+      </p>
+      <p class="contact-secondary">
+        <span data-lang="EN" class="lang-active">Or on Instagram: <a href="https://instagram.com/keylario" target="_blank" rel="noopener">@keylario</a></span>
+        <span data-lang="PT">Ou no Instagram: <a href="https://instagram.com/keylario" target="_blank" rel="noopener">@keylario</a></span>
+        <span data-lang="ES">O en Instagram: <a href="https://instagram.com/keylario" target="_blank" rel="noopener">@keylario</a></span>
       </p>
     </div>
   </section>
@@ -1622,23 +1577,6 @@
       window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
     }
 
-    // ── Video placeholder: hide once video loads ──
-    (function videoSetup() {
-      const video = document.querySelector('.video-wrapper video');
-      const placeholder = document.getElementById('video-placeholder');
-      if (!video || !placeholder) return;
-      const source = video.querySelector('source[data-src]');
-      if (source) {
-        // Activate video src on click to avoid autoloading
-        placeholder.style.cursor = 'pointer';
-        placeholder.addEventListener('click', function() {
-          source.src = source.dataset.src;
-          video.load();
-          video.play();
-          placeholder.style.display = 'none';
-        });
-      }
-    })();
   </script>
 
 </body>
