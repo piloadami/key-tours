@@ -1578,6 +1578,8 @@
     function openWhatsApp() {
       const lang = localStorage.getItem('keytours-lang') || LANGS[0];
       const msg  = WA_MSGS[lang] || WA_MSGS[LANGS[0]];
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'whatsapp_click', method: 'whatsapp' });
       window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
     }
 
