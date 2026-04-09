@@ -187,12 +187,11 @@
       align-items: center;
       justify-content: space-between;
     }
-    .nav.nav-hidden { display: none; }
     .nav-logo {
       display: flex;
       align-items: center;
     }
-    .nav-logo img { height: 72px; width: auto; display: block; }
+    .nav-logo img { height: 88px; width: auto; display: block; }
     .lang-toggle.lang-selected { display: none; }
     .lang-toggle {
       display: flex;
@@ -1545,28 +1544,31 @@
       });
       document.documentElement.lang = lang.toLowerCase();
       localStorage.setItem('keytours-lang', lang);
-      document.getElementById('nav').classList.add('nav-hidden');
+      document.querySelector('.lang-toggle').classList.add('lang-selected');
     }
 
     // Init: localStorage → browser language → primary
     (function init() {
       const saved   = localStorage.getItem('keytours-lang');
       const browser = (navigator.language || '').slice(0, 2).toUpperCase();
-      if (saved && LANGS.includes(saved)) {
-        // Returning visitor — apply lang silently, hide nav
+      const lang    = LANGS.includes(saved)   ? saved
+                    : LANGS.includes(browser) ? browser
+                    : LANGS[0];
+      if (saved) {
+        // Returning visitor — apply lang, hide toggle
         document.querySelectorAll('[data-lang]').forEach(el => {
-          el.classList.toggle('lang-active', el.dataset.lang === saved);
+          el.classList.toggle('lang-active', el.dataset.lang === lang);
         });
-        document.documentElement.lang = saved.toLowerCase();
-        document.getElementById('nav').classList.add('nav-hidden');
+        document.querySelectorAll('.lang-toggle button').forEach(btn => {
+          const active = btn.textContent.trim() === lang;
+          btn.classList.toggle('lang-btn-active', active);
+          btn.setAttribute('aria-pressed', String(active));
+        });
+        document.documentElement.lang = lang.toLowerCase();
+        document.querySelector('.lang-toggle').classList.add('lang-selected');
       } else {
-        // New visitor — show nav so they pick a language
-        const guessed = LANGS.includes(browser) ? browser : LANGS[0];
-        document.querySelectorAll('[data-lang]').forEach(el => {
-          el.classList.toggle('lang-active', el.dataset.lang === guessed);
-        });
-        document.documentElement.lang = guessed.toLowerCase();
-        // nav stays visible for language selection
+        setLang(lang);
+        document.querySelector('.lang-toggle').classList.remove('lang-selected');
       }
     })();
 
