@@ -187,6 +187,7 @@
       align-items: center;
       justify-content: space-between;
     }
+    .nav.nav-hidden { display: none; }
     .nav-logo {
       display: flex;
       align-items: center;
@@ -1544,27 +1545,29 @@
       });
       document.documentElement.lang = lang.toLowerCase();
       localStorage.setItem('keytours-lang', lang);
-      document.querySelector('.lang-toggle').classList.add('lang-selected');
+      document.getElementById('nav').classList.add('nav-hidden');
     }
 
     // Init: localStorage → browser language → primary
     (function init() {
       const saved   = localStorage.getItem('keytours-lang');
       const browser = (navigator.language || '').slice(0, 2).toUpperCase();
-      const lang    = LANGS.includes(saved)   ? saved
-                    : LANGS.includes(browser) ? browser
-                    : LANGS[0];
-      setLang(lang);
-    })();
-
-    // ── Nav scroll behaviour ─────────────────────
-    (function navScroll() {
-      const nav = document.getElementById('nav');
-      function onScroll() {
-        nav.classList.toggle('scrolled', window.scrollY > 60);
+      if (saved && LANGS.includes(saved)) {
+        // Returning visitor — apply lang silently, hide nav
+        document.querySelectorAll('[data-lang]').forEach(el => {
+          el.classList.toggle('lang-active', el.dataset.lang === saved);
+        });
+        document.documentElement.lang = saved.toLowerCase();
+        document.getElementById('nav').classList.add('nav-hidden');
+      } else {
+        // New visitor — show nav so they pick a language
+        const guessed = LANGS.includes(browser) ? browser : LANGS[0];
+        document.querySelectorAll('[data-lang]').forEach(el => {
+          el.classList.toggle('lang-active', el.dataset.lang === guessed);
+        });
+        document.documentElement.lang = guessed.toLowerCase();
+        // nav stays visible for language selection
       }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
     })();
 
     // ── WhatsApp CTA ─────────────────────────────
