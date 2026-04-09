@@ -189,7 +189,8 @@
       display: flex;
       align-items: center;
     }
-    .nav-logo img { height: 48px; width: auto; display: block; }
+    .nav-logo img { height: 72px; width: auto; display: block; }
+    .lang-toggle.lang-selected { display: none; }
     .lang-toggle {
       display: flex;
       gap: var(--space-1);
@@ -1541,6 +1542,7 @@
       });
       document.documentElement.lang = lang.toLowerCase();
       localStorage.setItem('keytours-lang', lang);
+      document.querySelector('.lang-toggle').classList.add('lang-selected');
     }
 
     // Init: localStorage → browser language → primary
