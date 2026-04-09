@@ -186,14 +186,10 @@
       justify-content: space-between;
     }
     .nav-logo {
-      font-family: var(--font-heading);
-      font-size: var(--text-2xl);
-      font-weight: 600;
-      color: var(--color-white);
-      letter-spacing: 0.02em;
-      transition: color 0.3s;
+      display: flex;
+      align-items: center;
     }
-    .nav.scrolled .nav-logo { color: var(--color-heading); }
+    .nav-logo img { height: 48px; width: auto; display: block; }
     .lang-toggle {
       display: flex;
       gap: var(--space-1);
@@ -1031,7 +1027,7 @@
   ════════════════════════════════════════════ -->
   <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a class="nav-logo" href="#" aria-label="Key Tours home">Key Tours</a>
+      <a class="nav-logo" href="#" aria-label="Key Tours home"><img src="./images/logo.png" alt="Key Tours" height="48" style="height:48px;width:auto;display:block;"></a>
       <div class="lang-toggle" role="navigation" aria-label="Language selection">
         <button onclick="setLang('EN')" class="lang-btn-active" aria-pressed="true" aria-label="English">EN</button>
         <button onclick="setLang('PT')" aria-pressed="false" aria-label="Português">PT</button>
