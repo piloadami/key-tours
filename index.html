@@ -192,7 +192,7 @@
       align-items: center;
     }
     .nav-logo img { height: 88px; width: auto; display: block; }
-    .lang-toggle.lang-selected { display: none; }
+
     .lang-toggle {
       display: flex;
       gap: var(--space-1);
@@ -1578,7 +1578,6 @@
       });
       document.documentElement.lang = lang.toLowerCase();
       localStorage.setItem('keytours-lang', lang);
-      document.querySelector('.lang-toggle').classList.add('lang-selected');
     }
 
     // Init: localStorage → browser language → primary
@@ -1599,10 +1598,9 @@
           btn.setAttribute('aria-pressed', String(active));
         });
         document.documentElement.lang = lang.toLowerCase();
-        document.querySelector('.lang-toggle').classList.add('lang-selected');
-      } else {
+        } else {
         setLang(lang);
-        document.querySelector('.lang-toggle').classList.remove('lang-selected');
+;
       }
     })();
 
