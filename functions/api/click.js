@@ -22,8 +22,14 @@ export async function onRequestPost({ request, env }) {
       },
       body,
     });
+    const text = await upstream.text();
     return new Response(
-      JSON.stringify({ ok: upstream.ok }),
+      JSON.stringify({
+        ok: upstream.ok,
+        upstream_status: upstream.status,
+        upstream_body: text.slice(0, 200),
+        secret_present: Boolean(env.KT_CLICKS_SECRET),
+      }),
       {
         status: upstream.ok ? 200 : 502,
         headers: { 'Content-Type': 'application/json' },
@@ -31,7 +37,7 @@ export async function onRequestPost({ request, env }) {
     );
   } catch (e) {
     return new Response(
-      JSON.stringify({ ok: false, err: 'worker_error' }),
+      JSON.stringify({ ok: false, err: 'worker_error', msg: String(e && e.message || e) }),
       { status: 502, headers: { 'Content-Type': 'application/json' } }
     );
   }
