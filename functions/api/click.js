@@ -6,10 +6,12 @@
 // Env vars (set in Cloudflare Pages → Settings → Environment variables):
 //   KT_CLICKS_SECRET — shared secret required by the VPS endpoint
 //
-// VPS endpoint: http://144.126.228.20:8083/clicks
+// VPS endpoint: http://clicks.keytours.guide:8083/clicks (A → 144.126.228.20)
+// Hostname required: CF Pages Functions fetch() rejects raw-IP URLs with
+// error 1003 ("direct IP access not allowed"). Porkbun A record bypasses it.
 // VPS service:  key-tours-clicks.service (systemd)
 
-const UPSTREAM = 'http://144.126.228.20:8083/clicks';
+const UPSTREAM = 'http://clicks.keytours.guide:8083/clicks';
 
 export async function onRequestPost({ request, env }) {
   try {
