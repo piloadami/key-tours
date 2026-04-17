@@ -1573,16 +1573,85 @@
     // ── WhatsApp CTA ─────────────────────────────
     const WA_NUMBER = '5521996763901';
     const WA_MSGS = {
-      EN: "Hi Keyla! I found Key Tours and I'd love to know more about your tours. I'm visiting Rio on [DATES]. Is there availability?",
-      PT: "Oi Keyla! Achei o Key Tours e queria saber mais sobre os passeios. Vou estar no Rio em [DATAS]. Tem disponibilidade?",
-      ES: "¡Hola Keyla! Encontré Key Tours y me gustaría saber más sobre los tours. Estaré en Río en [FECHAS]. ¿Hay disponibilidad?"
+      EN: "Hi Keyla! I'd like to know more about your tours 🙂",
+      PT: "Oi Keyla! Queria saber mais sobre os tours 🙂",
+      ES: "¡Hola Keyla! Quiero saber más sobre los tours 🙂"
     };
+    // Click log endpoint — same-origin Cloudflare Pages Function at functions/api/click.js
+    // forwards beacons to VPS FastAPI (144.126.228.20:8083) → agency-db key_tours_clicks table.
+    const CLICK_LOG_URL = '/api/click';
+    const GCLID_TTL_MS = 90 * 24 * 60 * 60 * 1000; // 90d = Google Ads attribution window
+
+    // Capture GCLID from URL on first landing, persist to localStorage
+    (function captureGclid() {
+      try {
+        const gclid = new URLSearchParams(location.search).get('gclid');
+        if (gclid) {
+          localStorage.setItem('kt_gclid', gclid);
+          localStorage.setItem('kt_gclid_ts', Date.now().toString());
+        }
+      } catch (e) { /* no-op */ }
+    })();
+
+    function detectWaLang() {
+      // Manual toggle wins (user has set language explicitly)
+      const stored = localStorage.getItem('keytours-lang');
+      if (stored && WA_MSGS[stored]) return stored;
+      // Browser auto-detect (Mario case — Spanish browser defaulted to EN before this fix)
+      const browser = (navigator.language || 'en').slice(0, 2).toUpperCase();
+      if (WA_MSGS[browser]) return browser;
+      return 'EN';
+    }
+
+    function detectWaSource() {
+      const gclid = localStorage.getItem('kt_gclid');
+      const gclidTs = parseInt(localStorage.getItem('kt_gclid_ts') || '0', 10);
+      if (gclid && (Date.now() - gclidTs) < GCLID_TTL_MS) {
+        return { code: 'G-' + gclid.slice(-8), full: 'google_ads', gclid: gclid };
+      }
+      const ref = document.referrer || '';
+      if (ref.indexOf('instagram.com') !== -1) return { code: 'I', full: 'instagram', gclid: null };
+      if (ref.indexOf('facebook.com')  !== -1) return { code: 'F', full: 'facebook',  gclid: null };
+      return { code: 'O', full: 'organic', gclid: null };
+    }
+
+    function logClick(payload) {
+      if (!CLICK_LOG_URL || CLICK_LOG_URL === 'REPLACE_ME') return;
+      try {
+        const body = JSON.stringify(payload);
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(CLICK_LOG_URL, body);
+        } else {
+          fetch(CLICK_LOG_URL, { method: 'POST', body: body, keepalive: true, mode: 'no-cors' });
+        }
+      } catch (e) { /* fire-and-forget */ }
+    }
 
     function openWhatsApp() {
-      const lang = localStorage.getItem('keytours-lang') || LANGS[0];
-      const msg  = WA_MSGS[lang] || WA_MSGS[LANGS[0]];
+      const lang = detectWaLang();
+      const src  = detectWaSource();
+      const msg  = (WA_MSGS[lang] || WA_MSGS.EN) + ' #' + src.code;
+
+      // Fire-and-forget click log (non-blocking, works even if endpoint is down)
+      logClick({
+        ts:     new Date().toISOString(),
+        gclid:  src.gclid,
+        source: src.full,
+        lang:   lang,
+        ref:    document.referrer || null,
+        ua:     navigator.userAgent,
+        path:   location.pathname + location.search
+      });
+
+      // GA4 / Google Ads
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'whatsapp_click', method: 'whatsapp' });
+      window.dataLayer.push({
+        event:     'whatsapp_click',
+        method:    'whatsapp',
+        wa_lang:   lang,
+        wa_source: src.full
+      });
+
       window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
     }
 
