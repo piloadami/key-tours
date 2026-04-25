@@ -1593,6 +1593,22 @@
       } catch (e) { /* no-op */ }
     })();
 
+    // Capture partner UTM (from QR codes at hotels/hostels/guest houses), persist to localStorage
+    (function captureUtm() {
+      try {
+        const params = new URLSearchParams(location.search);
+        const utmMedium   = params.get('utm_medium');
+        const utmSource   = params.get('utm_source');
+        const utmCampaign = params.get('utm_campaign');
+        if (utmMedium === 'partner') {
+          localStorage.setItem('kt_utm_source',   utmSource   || '');
+          localStorage.setItem('kt_utm_medium',   utmMedium);
+          localStorage.setItem('kt_utm_campaign', utmCampaign || '');
+          localStorage.setItem('kt_utm_ts',       Date.now().toString());
+        }
+      } catch (e) { /* no-op */ }
+    })();
+
     function detectWaLang() {
       // Manual toggle wins (user has set language explicitly)
       const stored = localStorage.getItem('keytours-lang');
@@ -1604,9 +1620,22 @@
     }
 
     function detectWaSource() {
-      const gclid = localStorage.getItem('kt_gclid');
-      const gclidTs = parseInt(localStorage.getItem('kt_gclid_ts') || '0', 10);
-      if (gclid && (Date.now() - gclidTs) < GCLID_TTL_MS) {
+      const now      = Date.now();
+      const gclid    = localStorage.getItem('kt_gclid');
+      const gclidTs  = parseInt(localStorage.getItem('kt_gclid_ts') || '0', 10);
+      const utmMed   = localStorage.getItem('kt_utm_medium');
+      const utmTs    = parseInt(localStorage.getItem('kt_utm_ts') || '0', 10);
+
+      const gclidValid = gclid && (now - gclidTs) < GCLID_TTL_MS;
+      const utmValid   = utmMed === 'partner' && (now - utmTs) < GCLID_TTL_MS;
+
+      // Last-click wins between paid (gclid) and partner (utm). Whichever is fresher.
+      if (utmValid && (!gclidValid || utmTs > gclidTs)) {
+        const camp = localStorage.getItem('kt_utm_campaign') || 'partner';
+        const slug = camp.toLowerCase().replace(/[^a-z0-9_]/g, '').slice(0, 32) || 'partner';
+        return { code: 'P-' + slug, full: 'partner_' + camp, gclid: null };
+      }
+      if (gclidValid) {
         return { code: 'G-' + gclid.slice(-8), full: 'google_ads', gclid: gclid };
       }
       const ref = document.referrer || '';
