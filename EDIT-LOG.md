@@ -61,3 +61,13 @@
 - gallery-4: rotated 90° CW (final dims 900×1200 portrait, content upright)
 - gallery-5: rotated 90° CW then 180° (final dims 900×1200 portrait, content upright)
 **Reason / context:** The previous `ImageOps.exif_transpose` fix trusted the EXIF orientation tags, but those tags were lying — the underlying pixel content was already upright in the original portrait files, so applying the EXIF rotation made them sideways. Verified each file visually with Read tool after rotation. Lesson: when EXIF orientation seems wrong, verify pixel content visually before trusting `exif_transpose` — bogus EXIF tags can flip a correct image into an incorrect one.
+
+## 2026-04-30 — Add Tripadvisor icon to top nav
+**Request:** can we add a tripadvisor icon in the header
+**Changed:** index.html
+**What changed:**
+- Added 4th icon to `.nav-social` (after Gmail): Tripadvisor owl SVG (Simple Icons CC0)
+- Link → https://www.tripadvisor.com/Attraction_Review-g303506-d34345028-Reviews-Key_Tours_Rio-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html
+- `target="_blank" rel="noopener noreferrer"` (consistent with other socials)
+- Mobile media query: tightened to 28x28 (from 32x32) icons + 16px SVG + 2px gap to fit 4 icons + lang-toggle + logo on 375px screens
+**Reason / context:** TA listing went live as `Key_Tours_Rio` (geo-disambiguator added because Athens operator owns "Key Tours" globally). Adds a 4th channel — channel grid is now: IG (community), YT (preview content), Gmail (lead capture), TA (social proof / reviews). Order on page reflects funnel position (top-of-funnel discovery → bottom-of-funnel reviews).

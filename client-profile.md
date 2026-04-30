@@ -188,6 +188,35 @@ would cause severe reputational damage and possible legal exposure. No insurance
 
 ---
 
+## Live Site & Channels
+*Last updated: 2026-04-30*
+
+**Domain:** [keytours.guide](https://keytours.guide)
+**Hosting:** Cloudflare Pages, repo `github.com/piloadami/key-tours.git` → `main` auto-deploys.
+**Languages live:** EN / PT / ES (toggle in nav, persists via localStorage key `keytours-lang`).
+**Design system:** `~/.claude/landing-projects/key-tours/design-system.md`. Edit log: `EDIT-LOG.md` in same dir.
+
+**Public contact channels surfaced on the site:**
+| Channel | Endpoint | Where on site |
+|---|---|---|
+| WhatsApp | (per spec / button) | Hero CTA, sticky CTA, Contact section |
+| Email    | `key.tour.rio@gmail.com` | Contact section + top-nav Gmail icon |
+| Instagram | `@key.tours` (`instagram.com/key.tours/`) | Top-nav IG icon |
+| YouTube  | Single video link (Santa Teresa) currently — channel is `@key.tours.rio.2026` | Top-nav YT icon + dedicated homepage video block |
+| Tripadvisor | `Key_Tours_Rio` listing (Rio de Janeiro) — `tripadvisor.com/Attraction_Review-g303506-d34345028-Reviews-Key_Tours_Rio-...` | Top-nav TA icon |
+
+**Top-nav layout (post-2026-04-30):** `[logo left] [EN/PT/ES centered] [IG · YT · Gmail · TA icons right]`. Mobile (<480px): icons shrink 40→28px to fit 4 social icons + 3 lang buttons + logo on one row.
+
+**Homepage section order:** Nav → Hero → Santa Teresa video (dark-forest bg) → About Keyla → Tours → How It Works → Traveler Notes → Gallery → Contact CTA → Footer.
+
+**Tour subpages:** `tour-{centro,copa,mototaxi,music,nature,nightlife}.html`. Listed in `sitemap.xml`. New subpages must be linked from `index.html`'s Tours section AND added to sitemap + Indexing API request (Pilo's SA: `n8n-sheets-connector`, scope `https://www.googleapis.com/auth/indexing`).
+
+**Known live-state caveats:**
+- Top-nav YouTube icon points at the *Santa Teresa video* (user's explicit choice over channel URL). Swap to channel URL `https://www.youtube.com/@key.tours.rio.2026` when more videos exist.
+- Domain GSC owned under `piloadami` personal Google, not Lamar.
+
+---
+
 ## Profile Summary
 
 Key Tours is a one-woman private cultural tour operation in Rio de Janeiro with a genuinely
