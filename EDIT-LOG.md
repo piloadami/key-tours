@@ -81,3 +81,12 @@
 - `.lang-toggle { justify-self: start }` on mobile (was inheriting `center`)
 - Bumped mobile icons back up to 32x32 (from 28x28) since removing logo freed horizontal space
 **Reason / context:** Mobile nav was tight with logo + 3 lang buttons + 4 social icons. Logo exists in hero immediately below — redundant on mobile. New mobile layout: [EN/PT/ES left] ........ [IG · YT · Gmail · TA right]. Desktop unchanged: logo left, lang centered, icons right.
+
+## 2026-04-30 — Edge-to-edge video on mobile
+**Request:** is there a way to increase youtube screen box size on mobile?
+**Changed:** index.html
+**What changed:**
+- New mobile media query (≤480px): `.video-feature .container { padding: 0 }` so the video wrapper bleeds full-width
+- Journal label + caption keep their `var(--space-6)` horizontal padding for breathing room
+- Desktop/tablet behaviour unchanged (video still capped at 900px max-width, container padding intact)
+**Reason / context:** On 375px screens the video was constrained to ~327px wide (container had 24px padding each side). Full-bleed gives ~48px more width and ~27px more height — roughly 15% bigger, more impactful as the first thing visitors see after the hero.
