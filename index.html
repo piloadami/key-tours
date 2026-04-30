@@ -213,9 +213,12 @@
     .nav-social a:hover { color: var(--color-gold); }
     .nav-social svg { width: 20px; height: 20px; display: block; }
     @media (max-width: 480px) {
-      .nav-social a { width: 28px; height: 28px; }
-      .nav-social svg { width: 16px; height: 16px; }
-      .nav-social { gap: 2px; }
+      .nav-inner { grid-template-columns: auto 1fr; }
+      .nav-logo { display: none; }
+      .lang-toggle { justify-self: start; }
+      .nav-social a { width: 32px; height: 32px; }
+      .nav-social svg { width: 18px; height: 18px; }
+      .nav-social { gap: var(--space-1); }
     }
 
     .lang-toggle {

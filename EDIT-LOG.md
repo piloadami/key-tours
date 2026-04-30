@@ -71,3 +71,13 @@
 - `target="_blank" rel="noopener noreferrer"` (consistent with other socials)
 - Mobile media query: tightened to 28x28 (from 32x32) icons + 16px SVG + 2px gap to fit 4 icons + lang-toggle + logo on 375px screens
 **Reason / context:** TA listing went live as `Key_Tours_Rio` (geo-disambiguator added because Athens operator owns "Key Tours" globally). Adds a 4th channel — channel grid is now: IG (community), YT (preview content), Gmail (lead capture), TA (social proof / reviews). Order on page reflects funnel position (top-of-funnel discovery → bottom-of-funnel reviews).
+
+## 2026-04-30 — Hide logo on mobile, shift lang toggle left
+**Request:** you can get rid of the logo on mobile, shift langugeas toglge to the left
+**Changed:** index.html
+**What changed:**
+- Mobile media query (≤480px): `.nav-logo { display: none }`
+- Mobile grid template: `auto 1fr` (was inheriting `1fr auto 1fr`)
+- `.lang-toggle { justify-self: start }` on mobile (was inheriting `center`)
+- Bumped mobile icons back up to 32x32 (from 28x28) since removing logo freed horizontal space
+**Reason / context:** Mobile nav was tight with logo + 3 lang buttons + 4 social icons. Logo exists in hero immediately below — redundant on mobile. New mobile layout: [EN/PT/ES left] ........ [IG · YT · Gmail · TA right]. Desktop unchanged: logo left, lang centered, icons right.
