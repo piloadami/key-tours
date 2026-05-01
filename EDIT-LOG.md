@@ -1,5 +1,76 @@
 # Edit Log — Key Tours
 
+## 2026-05-01 — Make partnership names clickable inside the new FAQ answer
+**Request:** "for what's your tour guide experience make mentions clickable"
+**Changed:** index.html (CSS + FAQ HTML)
+**What changed:**
+- Added `.faq-a a` CSS rule: heading-color text, weight 500, subtle 1px beige underline (offset 3px), hover swaps to terracotta accent — matches the trust-strip link affordance pattern used elsewhere on the page
+- Wrapped Voyageurs du Monde, Dehouche, Viajeros Modo Avión, and LIT Media Productions in `<a target="_blank" rel="noopener noreferrer">` tags inside all 3 language spans of the "What's your tour guide experience?" FAQ answer
+- Schema.org JSON-LD intentionally NOT updated (Schema.org @text fields are plain text, no HTML allowed)
+**Reason / context:** User wanted the partner names in the FAQ answer to be clickable for verification, matching the hero microline + trust-strip behavior.
+
+## 2026-05-01 — Add Dehouche, Viajeros Modo Avión, LIT Media Productions partnerships
+**Request:** "hero section needs to contain more of keyla's partnerships to create authority" — add Dehouche, Viajeros Modo Avión, and LIT Media Productions next to existing Voyageurs du Monde mention
+**Changed:** index.html (CSS + hero HTML + trust-strip HTML + FAQ HTML + JSON-LD)
+**What changed:**
+- New `.hero-trust` CSS block (microline style: muted beige, sm font-size, underlined links, accent-light hover) + `.hero-trust-sep` middot separator
+- Added `<p class="hero-trust">` below the hero CTA button — single line "Booked by [Voyageurs du Monde · Dehouche · Viajeros Modo Avión · LIT Media Productions]" in EN/PT/ES, all 4 names link out to respective sites
+- New `.trust-sep` + `.trust-item-multi` CSS for the Social Proof trust-strip (separator dot + wrap support)
+- Extended Social Proof trust-strip — added Dehouche, Viajeros Modo Avión, LIT Media Productions as additional `<a class="trust-link">` items inside the same "Featured by" group, separated by `·` middots
+- New FAQ Q&A inserted after "Why a non-certified guide?" — Q: "What's your tour guide experience?" / "Qual é a sua experiência como guia?" / "¿Cuál es tu experiencia como guía?". Answer mentions all 4 partnerships in 4 sentences (one per partner). LIT Media line specifies role as "logistics production manager for a Victoria's Secret event"
+- Schema.org FAQPage JSON-LD updated with matching new Q&A in third-person Keyla form so Google sees the same content
+**Voice/tone notes:** Matched existing FAQ first-person "I" voice (not third-person), neutral observational phrasing, no brochure framing. Dehouche described as "a Brazilian luxury travel agency"; Viajeros Modo Avión left undescribed (verb does the work: "hires me to guide their Spanish-speaking travelers"). LIT Media positioned as outside-guiding production work to honestly differentiate from the three travel partners.
+**Reason / context:** User wanted more partnership authority signals in the hero. Voyageurs du Monde alone wasn't enough credibility ammo; Dehouche + Viajeros add tour-guide partnership depth across French / Brazilian / Spanish-speaking markets, LIT adds production credibility from a recognizable consumer brand (Victoria's Secret).
+
+## 2026-04-30 — Make Voyageurs du Monde + Tripadvisor in trust strip clickable
+**Request:** make voyagers du monde and listed on trip clickable
+**Changed:** index.html
+**What changed:**
+- Wrapped "Voyageurs du Monde" wordmark in `<a class="trust-link" href="https://www.voyageursdumonde.fr/" target="_blank" rel="noopener noreferrer">`
+- Added `.trust-link .trust-name` CSS rule with subtle 1px underline (color = `--color-border` beige, offset 4px) so both link names visually read as clickable. Hover swaps underline color to `--color-accent` (terracotta) for confirmation feedback
+- TripAdvisor block was already a clickable `<a>` — the underline treatment applies via the same `.trust-link .trust-name` selector
+**Reason / context:** Both items in the trust strip were styled identically (color: --color-heading / no underline) so neither read as a link. User pointed out VdM wasn't even an `<a>` tag. Now both have explicit anchor tags + persistent subtle underline + hover affordance.
+
+## 2026-04-30 — Widen Santa Teresa video to 1100px + crop letterbox bars
+**Request:** widen video frame; "still same" follow-up — letterbox bars still visible on poster
+**Changed:** index.html
+**What changed:**
+- `.video-wrapper` max-width 900px → 1100px to match `.container` max-width
+- `.video-poster img` scaled to 1.22 with `transform-origin: center top` — crops the ~17% black letterbox bar baked into YouTube's `maxresdefault.jpg` (original video shot ultrawide, fit into 16:9 canvas with bottom letterbox)
+- Hover scale adjusted to compound (1.26 + translateY -1%) so motion still reads
+**Reason / context:** YouTube's CDN thumbnail has letterbox bars from the original video aspect ratio. Cropping in CSS hides them. Permanent fix is re-uploading a true 16:9 still in YouTube Studio.
+
+## 2026-04-30 — Trust strip: Voyageurs du Monde + TripAdvisor in proof section
+**Request:** add a, and c, tripadvisor business listing is on (referring to: A) Trusted by partner strip with Voyageurs du Monde, C) reserve TripAdvisor badge slot — TA listing is now LIVE, no longer in moderation)
+**Changed:** index.html
+**What changed:**
+- New `.trust-strip` CSS block colocated in the SOCIAL PROOF section CSS (flex row, centered, gap, beige border-bottom matching proof bg)
+- New `<div class="trust-strip">` inserted at the top of the proof section, ABOVE the existing "Traveler Notes" journal-label — institutional credibility (agency endorsement + listing) precedes the personal testimonial quotes
+- Two trust items: (1) "Featured by · Voyageurs du Monde" — italic wordmark, no logo file (avoids brand-asset uncertainty); (2) "Listed on Tripadvisor" — links to existing live listing https://www.tripadvisor.com/Attraction_Review-g303506-d34345028... reusing the same TA SVG owl mark already in nav-social
+- All labels trilingual (EN/PT/ES) via existing `data-lang` system: EN "Featured by" / PT "Indicada por" / ES "Recomendada por"; EN "Listed on Tripadvisor" / PT "Listada no Tripadvisor" / ES "Listada en Tripadvisor"
+- Mobile: stacks vertically at ≤600px, smaller font
+**Reason / context:** Reinforces the partner credit (Voyageurs du Monde) that's already mentioned in About copy and FAQ Q3, and surfaces the now-live TripAdvisor listing as a discoverable trust signal beyond just the small icon in the nav. No JS, no new schema (existing TouristTrip + FAQPage stays). TA review badge widget (with stars + review count) is a future enhancement once reviews accumulate — current placement supports drop-in upgrade.
+
+## 2026-04-30 — Lite-YouTube poster on Santa Teresa feature video
+**Request:** fix youtube thumbnail on home page — embed was rendering as black with overlay only, even though the YouTube channel thumbnail (Keyla, "Welcome to Santa Teresa Tour") looks great
+**Changed:** index.html
+**What changed:**
+- Replaced inline iframe with click-to-load `<button class="video-poster">` containing `<img>` of `https://img.youtube.com/vi/EAYVSn5Shw0/maxresdefault.jpg` (YouTube's CDN copy of the uploaded custom thumbnail) + circular gold play button overlay matching the brand `--color-gold`
+- Added `.video-poster`, `.video-poster img`, `.video-play` CSS — radial vignette, hover scale on image + play button, `box-shadow` lift on play button
+- Added `loadVideo()` JS — swaps poster for autoplay iframe on click. Keeps original allow/allowfullscreen/referrerpolicy attrs
+- Mobile: `.video-play` shrinks to 64px on ≤480px
+**Reason / context:** the embed was showing only YouTube's chrome (title bar + play overlay) with a black background — the actual thumbnail wasn't loading reliably in the iframe. Lite-YouTube pattern guarantees the thumbnail renders, also improves perceived load (no iframe until click).
+
+## 2026-04-30 — Add FAQ section + FAQPage schema on homepage
+**Request:** add a FAQ to key tours website: how, what, why a non certified guide, insurance? — expanded to 9 Qs in conversation (added safety, cancellation/refund, languages, mobility/kids, what to bring/tipping)
+**Changed:** index.html
+**What changed:**
+- New `.faq*` CSS block (light bg matching `.how`, max-width 42rem readable column, thin border separators, Abril Fatface questions, light DM Sans answers)
+- New `<section id="faq" class="faq section-pad">` between How It Works and Traveler Notes — 9 Q&As, all in EN/PT/ES via existing `data-lang` system, first-person Keyla voice matching About section
+- Wave divider comment relabeled `how → proof` → `faq → proof` (no visual change — same divider works since FAQ shares `--color-bg` with `.how`)
+- FAQPage schema.org JSON-LD added as a second `<script type="application/ld+json">` block (existing TourOperator schema untouched). 9 Q&A entries written third-person about Keyla per FAQPage convention. Helps Google surface "People also ask" rich snippets.
+**Reason / context:** Pre-CTA objection handling. Reddit research surfaced safety, cancellation policy, language, mobility as recurring traveler concerns beyond user's original 4. Cancellation policy locked as "48h free / inside 48h reschedule, no deposit kept on good-faith cancellations". Payment methods locked as cash on day (BRL/USD/EUR) + Wise + Payoneer + PayPal. Q1 includes the picnic-by-river / guitar / kids-in-Portuguese anecdote as concrete proof of customization. No JS added — stacked Q&A pattern, no accordion.
+
 ## 2026-04-29 — Add Santa Teresa YouTube video on homepage
 **Request:** add santa teresa youtube video on home page, where do you suggest?
 **Changed:** index.html

@@ -65,6 +65,96 @@
   }
   </script>
 
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does it work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Keyla builds each tour around you — what you want to understand, how you like to move, what you've already seen. There are four routes (City Centre, Nature, Copacabana, Night Life) but no two come out the same. Message her on WhatsApp with your dates and what interests you, and she'll put together a route that fits."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's included?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Five hours, door-to-door from your hotel or Airbnb. Up to six people. Transport with a trusted driver, Keyla as your guide, and the time to actually walk into places — a cathedral, a samba bar, a viewpoint — instead of being rushed past them. Entrance fees and food aren't included. You can pay cash on the day (BRL, USD, or EUR), or in advance by Wise, Payoneer, or PayPal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why a non-certified guide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Brazil's tour-guide certification is a tourism-school program built for chartered groups and bus tours. Keyla is a Carioca with 10 years researching the history, culture, and behaviour of Rio. What she offers is a private cultural walk through the city the way someone who lives there would show it to you — not a regulated group excursion. Voyageurs du Monde, France's leading luxury travel operator, books her on this basis."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's your tour guide experience?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Voyageurs du Monde, France's leading luxury travel operator, books Keyla for clients visiting Rio. Dehouche, a Brazilian luxury travel agency, sends her their guests when they're in the city. Viajeros Modo Avión hires her to guide their Spanish-speaking travelers in Rio. Outside of guiding, she worked as logistics production manager for a Victoria's Secret event with LIT Media Productions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What about insurance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Keyla works with a trusted driver who carries vehicle insurance covering passengers. For personal medical coverage, travelers are encouraged to arrive with traveler's insurance — standard practice for any trip to Rio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Rio safe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Parts of Rio require awareness, like any large city. On tour with Keyla you're with someone who knows which streets to walk and which to skip, when to take a car instead of the bus, where the phone stays in the bag and where it's fine to use. Routes are built around what's safe to do that day, not a fixed itinerary. In 10+ years of guiding, no client has had an incident on a tour with her."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if my flight is delayed, it rains, or I need to cancel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tell Keyla as soon as you know and she'll find another day during your trip if possible. Cancellations more than 48 hours before the tour are free. Inside 48 hours she'll work with you on rescheduling — deposits aren't kept on cancellations made in good faith."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What languages do you guide in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Portuguese, English, and Spanish — fluently, all three."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it walking-heavy? Can I bring kids? What about reduced mobility?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most routes involve walking — Centro and Santa Teresa especially have hills and uneven paving. For limited mobility, Keyla builds a route with more car, less walking, and flatter neighborhoods. Kids are welcome on all the day routes — Night Life isn't for kids."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I bring? Should I tip?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Comfortable walking shoes, a sun hat, a water bottle, cash in reais for snacks and small entrance fees, and your phone with WhatsApp on. Tipping isn't a strong cultural norm in Brazil and isn't expected — but always appreciated if a tour goes well."
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- Preload hero image -->
   <link rel="preload" as="image" href="./images/hero.jpg">
 
@@ -324,6 +414,37 @@
       line-height: 1.6;
       max-width: 580px;
       margin: 0 auto var(--space-10);
+    }
+    .hero-trust {
+      margin-top: var(--space-6);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 400;
+      color: rgba(255,253,249,0.7);
+      letter-spacing: 0.02em;
+      line-height: 1.7;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-trust .hero-trust-label {
+      color: rgba(255,253,249,0.55);
+      margin-right: 0.4em;
+    }
+    .hero-trust a {
+      color: rgba(255,253,249,0.92);
+      text-decoration: underline;
+      text-decoration-color: rgba(255,253,249,0.25);
+      text-underline-offset: 3px;
+      transition: color 0.2s, text-decoration-color 0.2s;
+    }
+    .hero-trust a:hover {
+      color: var(--color-accent-light);
+      text-decoration-color: var(--color-accent-light);
+    }
+    .hero-trust .hero-trust-sep {
+      margin: 0 0.4em;
+      color: rgba(255,253,249,0.4);
     }
 
     /* Hero stamp badge */
@@ -620,9 +741,118 @@
     }
 
     /* ══════════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════════ */
+    .faq { background: var(--color-bg); }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+      max-width: 42rem;
+      margin: var(--space-12) auto 0;
+    }
+    .faq-item {
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-6);
+    }
+    .faq-q {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: 400;
+      color: var(--color-heading);
+      margin: 0 0 var(--space-3) 0;
+      line-height: 1.3;
+    }
+    .faq-a {
+      font-size: var(--text-base);
+      font-weight: 300;
+      color: var(--color-text);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .faq-a a {
+      color: var(--color-heading);
+      font-weight: 500;
+      text-decoration: underline;
+      text-decoration-color: var(--color-border);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color 0.2s, text-decoration-color 0.2s;
+    }
+    .faq-a a:hover {
+      color: var(--color-accent);
+      text-decoration-color: var(--color-accent);
+    }
+
+    /* ══════════════════════════════════════════
        SOCIAL PROOF
     ══════════════════════════════════════════ */
     .proof { background: linear-gradient(145deg, #E8DDC8 0%, #E0D4BC 60%, #D8CAB0 100%); }
+    .trust-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-8);
+      max-width: 720px;
+      margin: 0 auto var(--space-12);
+      padding-bottom: var(--space-8);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .trust-label {
+      font-family: var(--font-handwriting);
+      color: var(--color-muted);
+      font-size: var(--text-base);
+    }
+    .trust-name {
+      font-family: var(--font-heading);
+      color: var(--color-heading);
+      font-size: var(--text-lg);
+      letter-spacing: 0.02em;
+    }
+    .trust-vdm { font-style: italic; }
+    .trust-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      color: var(--color-heading);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .trust-link .trust-name {
+      text-decoration: underline;
+      text-decoration-color: var(--color-border);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+      transition: text-decoration-color 0.2s;
+    }
+    .trust-link:hover { opacity: 0.85; }
+    .trust-link:hover .trust-name { text-decoration-color: var(--color-accent); }
+    .trust-sep {
+      color: var(--color-muted);
+      opacity: 0.5;
+      font-family: var(--font-heading);
+    }
+    .trust-item-multi {
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: var(--space-2);
+    }
+    .trust-icon {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+    @media (max-width: 600px) {
+      .trust-strip { gap: var(--space-4); flex-direction: column; }
+      .trust-name  { font-size: var(--text-base); }
+    }
     .proof-inner {
       max-width: 720px;
       margin: 0 auto;
@@ -679,16 +909,76 @@
     }
     .video-wrapper {
       aspect-ratio: 16/9;
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       background: var(--color-dark-earth);
       overflow: hidden;
+      position: relative;
     }
     .video-wrapper iframe {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
+    }
+    .video-poster {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: var(--color-dark-earth);
+      cursor: pointer;
+      position: relative;
+      display: block;
+      overflow: hidden;
+    }
+    .video-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.32);
+      transform-origin: center 60%;
+      transition: transform 0.4s ease;
+    }
+    .video-poster:hover img,
+    .video-poster:focus-visible img { transform: scale(1.36); transform-origin: center 60%; }
+    .video-poster::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.45) 100%);
+      pointer-events: none;
+    }
+    .video-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: rgba(200,134,10,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      pointer-events: none;
+      transition: transform 0.2s ease;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+    }
+    .video-poster:hover .video-play,
+    .video-poster:focus-visible .video-play { transform: translate(-50%, -50%) scale(1.08); }
+    .video-play svg {
+      width: 34px;
+      height: 34px;
+      fill: var(--color-cream);
+      margin-left: 4px;
+    }
+    @media (max-width: 480px) {
+      .video-play { width: 64px; height: 64px; }
+      .video-play svg { width: 26px; height: 26px; margin-left: 3px; }
     }
     .video-caption {
       font-family: var(--font-body);
@@ -1138,6 +1428,14 @@
         <span data-lang="PT">Planejar meu tour com a Keyla</span>
         <span data-lang="ES">Planear mi tour con Keyla</span>
       </button>
+      <p class="hero-trust">
+        <span class="hero-trust-label">
+          <span data-lang="EN" class="lang-active">Booked by</span>
+          <span data-lang="PT">Contratada por</span>
+          <span data-lang="ES">Contratada por</span>
+        </span>
+        <a href="https://www.voyageursdumonde.fr/" target="_blank" rel="noopener noreferrer">Voyageurs du Monde</a><span class="hero-trust-sep">·</span><a href="https://www.dehouche.com" target="_blank" rel="noopener noreferrer">Dehouche</a><span class="hero-trust-sep">·</span><a href="https://viajerosmodoavion.com" target="_blank" rel="noopener noreferrer">Viajeros Modo Avión</a><span class="hero-trust-sep">·</span><a href="https://www.litmediaproductions.com" target="_blank" rel="noopener noreferrer">LIT Media Productions</a>
+      </p>
     </div>
   </section>
 
@@ -1152,14 +1450,13 @@
   <section class="video-feature section-pad" aria-label="Santa Teresa, Rio de Janeiro">
     <div class="container">
       <span class="journal-label" style="text-align:center;display:block;">Santa Teresa</span>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/EAYVSn5Shw0?rel=0"
-          title="Santa Teresa, Rio de Janeiro — Key Tours"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="video-wrapper" id="videoWrapper">
+        <button type="button" class="video-poster" onclick="loadVideo()" aria-label="Play Santa Teresa video">
+          <img src="https://img.youtube.com/vi/EAYVSn5Shw0/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
+          <span class="video-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </button>
       </div>
       <p class="video-caption">
         <span data-lang="EN" class="lang-active">A few minutes through Santa Teresa, the way she walks it.</span>
@@ -1469,7 +1766,158 @@
     </div>
   </section>
 
-  <!-- Wave: how → proof -->
+  <!-- ═══════════════════════════════════════════
+       FAQ
+  ════════════════════════════════════════════ -->
+  <section id="faq" class="faq section-pad" aria-labelledby="faq-heading">
+    <div class="container">
+      <span class="journal-label" style="text-align:center;display:block;">
+        <span data-lang="EN" class="lang-active">Common Questions</span>
+        <span data-lang="PT">Perguntas Frequentes</span>
+        <span data-lang="ES">Preguntas Comunes</span>
+      </span>
+      <h2 class="section-heading section-heading-center" id="faq-heading">
+        <span data-lang="EN" class="lang-active">Before you message.</span>
+        <span data-lang="PT">Antes de mandar mensagem.</span>
+        <span data-lang="ES">Antes de escribirme.</span>
+      </h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <span data-lang="EN" class="lang-active">How does it work?</span>
+            <span data-lang="PT">Como funciona?</span>
+            <span data-lang="ES">¿Cómo funciona?</span>
+          </h3>
+          <p class="faq-a">
+            <span data-lang="EN" class="lang-active">I build each tour around you — what you want to understand, how you like to move, what you've already seen. There are four routes (City Centre, Nature, Copacabana, Night Life) but no two come out the same. One family wanted a slow day with their kids — I laid out a picnic by the river, brought my guitar, and taught the children to sing songs in Portuguese. Message me on WhatsApp with your dates and what interests you, and I'll put together a route that fits.</span>
+            <span data-lang="PT">Eu construo cada tour em volta de você — o que você quer entender, como gosta de andar, o que já viu. Tem quatro roteiros (Centro, Natureza, Copacabana, Noite), mas nenhum sai igual a outro. Uma família queria um dia tranquilo com as crianças — montei um piquenique na beira do rio, levei meu violão e ensinei as crianças a cantar em português. Me manda mensagem no WhatsApp com suas datas e o que te interessa, que eu monto um roteiro que combina com você.</span>
+            <span data-lang="ES">Construyo cada tour alrededor de ti — lo que quieres entender, cómo te gusta andar, lo que ya has visto. Hay cuatro rutas (Centro, Naturaleza, Copacabana, Noche), pero ninguna sale igual a otra. Una familia quería un día tranquilo con sus hijos — armé un picnic a la orilla del río, traje mi guitarra y enseñé a los niños a cantar canciones en portugués. Escríbeme por WhatsApp con tus fechas y lo que te interesa, y armo una ruta que te quede.</span>
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <span data-lang="EN" class="lang-active">What's included?</span>
+            <span data-lang="PT">O que está incluído?</span>
+            <span data-lang="ES">¿Qué está incluido?</span>
+          </h3>
+          <p class="faq-a">
+            <span data-lang="EN" class="lang-active">Five hours, door-to-door from your hotel or Airbnb. Up to six people. Transport with a driver I trust, me as your guide, and the time to actually walk into places — a cathedral, a samba bar, a viewpoint — instead of being rushed past them. Entrance fees and food aren't included; I'll tell you which stops have costs before we go. You can pay cash on the day (BRL, USD, or EUR), or in advance by Wise, Payoneer, or PayPal.</span>
+            <span data-lang="PT">Cinco horas, porta a porta a partir do seu hotel ou Airbnb. Até seis pessoas. Transporte com um motorista de confiança, eu como sua guia, e tempo de verdade pra entrar nos lugares — uma catedral, um bar de samba, um mirante — em vez de só passar por eles correndo. Entradas e comida não estão inclusas; te aviso quais paradas têm custo antes da gente sair. Você pode pagar em dinheiro no dia (reais, dólares ou euros) ou adiantado por Wise, Payoneer ou PayPal.</span>
+            <span data-lang="ES">Cinco horas, puerta a puerta desde tu hotel o Airbnb. Hasta seis personas. Transporte con un conductor de confianza, yo como tu guía, y tiempo de verdad para entrar en los lugares — una catedral, un bar de samba, un mirador — en vez de pasar corriendo. Entradas y comida no están incluidas; te aviso qué paradas tienen costo antes de salir. Puedes pagar en efectivo el día (reales, dólares o euros) o por adelantado por Wise, Payoneer o PayPal.</span>
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <span data-lang="EN" class="lang-active">Why a non-certified guide?</span>
+            <span data-lang="PT">Por que uma guia não certificada?</span>
+            <span data-lang="ES">¿Por qué una guía no certificada?</span>
+          </h3>
+          <p class="faq-a">
+            <span data-lang="EN" class="lang-active">Brazil's tour-guide certification is a tourism-school program — built for chartered groups and bus tours. That isn't what I do. I'm a Carioca, born in Zona Norte and raised in Zona Sul, and I've spent 10 years researching the history, culture, and behaviour of this city. What I offer is a private cultural walk through Rio the way someone who lives here would show it to you — not a regulated group excursion. You're paying for my perspective, not a license number. Voyageurs du Monde — France's leading luxury travel operator — books me on this basis.</span>
+            <span data-lang="PT">A certificação de guia de turismo no Brasil é um curso técnico — feito pra grupos fechados e tours de ônibus. Não é o que eu faço. Sou Carioca, nasci na Zona Norte, cresci na Zona Sul, e venho desenvolvendo há 10 anos uma pesquisa sobre a história, a cultura e o comportamento dessa cidade. O que eu ofereço é uma caminhada cultural privada pelo Rio, do jeito que alguém que mora aqui te mostraria — não uma excursão regulamentada em grupo. Você está pagando pela minha perspectiva, não por um número de licença. A Voyageurs du Monde — a principal operadora de viagens de luxo da França — me contrata nessa base.</span>
+            <span data-lang="ES">La certificación de guía turístico en Brasil es un programa de escuela técnica — pensado para grupos cerrados y tours en bus. Eso no es lo que hago. Soy Carioca, nacida en Zona Norte y criada en Zona Sul, y llevo 10 años investigando la historia, la cultura y el comportamiento de esta ciudad. Lo que ofrezco es una caminata cultural privada por Río, como te lo mostraría alguien que vive aquí — no una excursión regulada en grupo. Estás pagando por mi perspectiva, no por un número de licencia. Voyageurs du Monde — la principal operadora de viajes de lujo de Francia — me contrata sobre esta base.</span>
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <span data-lang="EN" class="lang-active">What's your tour guide experience?</span>
+            <span data-lang="PT">Qual é a sua experiência como guia?</span>
+            <span data-lang="ES">¿Cuál es tu experiencia como guía?</span>
+          </h3>
+          <p class="faq-a">
+            <span data-lang="EN" class="lang-active"><a href="https://www.voyageursdumonde.fr/" target="_blank" rel="noopener noreferrer">Voyageurs du Monde</a> — France's leading luxury travel operator — books me for clients visiting Rio. <a href="https://www.dehouche.com" target="_blank" rel="noopener noreferrer">Dehouche</a>, a Brazilian luxury travel agency, sends me their guests when they're in the city. <a href="https://viajerosmodoavion.com" target="_blank" rel="noopener noreferrer">Viajeros Modo Avión</a> hires me to guide their Spanish-speaking travelers in Rio. Outside of guiding, I worked as logistics production manager for a Victoria's Secret event with <a href="https://www.litmediaproductions.com" target="_blank" rel="noopener noreferrer">LIT Media Productions</a>.</span>
+            <span data-lang="PT">A <a href="https://www.voyageursdumonde.fr/" target="_blank" rel="noopener noreferrer">Voyageurs du Monde</a> — a principal operadora de viagens de luxo da França — me contrata para clientes que vêm ao Rio. A <a href="https://www.dehouche.com" target="_blank" rel="noopener noreferrer">Dehouche</a>, agência brasileira de viagens de luxo, me indica para seus hóspedes na cidade. A <a href="https://viajerosmodoavion.com" target="_blank" rel="noopener noreferrer">Viajeros Modo Avión</a> me contrata para guiar seus viajantes de língua espanhola no Rio. Fora do trabalho de guia, atuei como gerente de produção e logística em um evento da Victoria's Secret com a <a href="https://www.litmediaproductions.com" target="_blank" rel="noopener noreferrer">LIT Media Productions</a>.</span>
+            <span data-lang="ES"><a href="https://www.voyageursdumonde.fr/" target="_blank" rel="noopener noreferrer">Voyageurs du Monde</a> — la principal operadora de viajes de lujo de Francia — me contrata para clientes que vienen a Río. <a href="https://www.dehouche.com" target="_blank" rel="noopener noreferrer">Dehouche</a>, agencia brasileña de viajes de lujo, me envía a sus huéspedes en la ciudad. <a href="https://viajerosmodoavion.com" target="_blank" rel="noopener noreferrer">Viajeros Modo Avión</a> me contrata para guiar a sus viajeros hispanohablantes en Río. Fuera del trabajo de guía, trabajé como gerente de producción y logística en un evento de Victoria's Secret con <a href="https://www.litmediaproductions.com" target="_blank" rel="noopener noreferrer">LIT Media Productions</a>.</span>
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <span data-lang="EN" class="lang-active">What about insurance?</span>
+            <span data-lang="PT">E o seguro?</span>
+            <span data-lang="ES">¿Y el seguro?</span>
+          </h3>
+          <p class="faq-a">
+            <span data-lang="EN" class="lang-active">I work with a driver I trust who carries vehicle insurance covering passengers. For personal medical coverage, I recommend you arrive with traveler's insurance — it's standard for any trip to Rio and covers you across everything you'll do here, not just our tour.</span>
+            <span data-lang="PT">Trabalho com um motorista de confiança que tem seguro do veículo cobrindo passageiros. Pra cobertura médica pessoal, recomendo que você venha com seguro de viagem — é padrão pra qualquer viagem ao Rio e te cobre em tudo que você for fazer aqui, não só no nosso tour.</span>
+            <span data-lang="ES">Trabajo con un conductor de confianza que tiene seguro del vehículo cubriendo pasajeros. Para cobertura médica personal, te recomiendo que vengas con seguro de viaje — es estándar para cualquier viaje a Río y te cubre en todo lo que hagas aquí, no sólo en nuestro tour.</span>
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <span data-lang="EN" class="lang-active">Is Rio safe?</span>
+            <span data-lang="PT">O Rio é seguro?</span>
+            <span data-lang="ES">¿Es seguro Río?</span>
+          </h3>
+          <p class="faq-a">
+            <span data-lang="EN" class="lang-active">Rio gets asked this more than any other question. Yes, parts of the city require awareness — like any large city. On tour with me, you're with someone who knows which streets to walk and which to skip, when to take a car instead of the bus, where the phone stays in the bag and where it's fine to use. I build the route around what's safe to do that day, not a fixed itinerary. In 10+ years of guiding, no client has had an incident on a tour with me.</span>
+            <span data-lang="PT">O Rio é a pergunta que mais me fazem. Sim, partes da cidade pedem atenção — como qualquer cidade grande. No tour comigo, você tá com alguém que sabe quais ruas andar e quais evitar, quando pegar carro em vez de ônibus, onde o celular fica na bolsa e onde dá pra usar tranquilo. Eu monto a rota em volta do que tá seguro fazer naquele dia, não num roteiro fixo. Em mais de 10 anos guiando, nenhum cliente teve qualquer incidente num tour comigo.</span>
+            <span data-lang="ES">Río es la pregunta que más me hacen. Sí, partes de la ciudad piden atención — como cualquier ciudad grande. En el tour conmigo, estás con alguien que sabe qué calles caminar y cuáles evitar, cuándo tomar un auto en vez del bus, dónde el teléfono se queda en la bolsa y dónde se puede usar tranquilo. Construyo la ruta alrededor de lo que es seguro hacer ese día, no de un itinerario fijo. En más de 10 años guiando, ningún cliente ha tenido un incidente en un tour conmigo.</span>
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <span data-lang="EN" class="lang-active">What if my flight is delayed, it rains, or I need to cancel?</span>
+            <span data-lang="PT">E se meu voo atrasar, chover, ou eu precisar cancelar?</span>
+            <span data-lang="ES">¿Y si mi vuelo se retrasa, llueve, o necesito cancelar?</span>
+          </h3>
+          <p class="faq-a">
+            <span data-lang="EN" class="lang-active">Life happens — flights get delayed, weather changes, plans shift. Tell me as soon as you know and we'll find another day during your trip if possible. If you cancel more than 48 hours before the tour, no charge. Within 48 hours, I'll work with you on rescheduling — I don't keep deposits on cancellations made in good faith.</span>
+            <span data-lang="PT">A vida acontece — voos atrasam, o tempo muda, planos mudam. Me avisa assim que souber e a gente acha outro dia dentro da sua viagem, se der. Cancelamento com mais de 48 horas de antecedência — sem cobrança. Dentro das 48 horas, a gente remarca juntos — eu não fico com sinal em cancelamentos feitos de boa-fé.</span>
+            <span data-lang="ES">La vida pasa — los vuelos se retrasan, el clima cambia, los planes cambian. Avísame en cuanto sepas y buscamos otro día dentro de tu viaje, si es posible. Si cancelas con más de 48 horas de antelación, sin cargo. Dentro de las 48 horas, lo reagendamos juntos — no me quedo con depósitos en cancelaciones hechas de buena fe.</span>
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <span data-lang="EN" class="lang-active">What languages do you guide in?</span>
+            <span data-lang="PT">Em quais idiomas você guia?</span>
+            <span data-lang="ES">¿En qué idiomas guías?</span>
+          </h3>
+          <p class="faq-a">
+            <span data-lang="EN" class="lang-active">Portuguese, English, and Spanish — fluently, all three. I lived in several countries, and language is part of how I read what someone wants from a place.</span>
+            <span data-lang="PT">Português, inglês e espanhol — os três fluentemente. Morei em vários países, e o idioma faz parte de como eu leio o que cada pessoa quer de um lugar.</span>
+            <span data-lang="ES">Portugués, inglés y español — los tres con fluidez. Viví en varios países, y el idioma es parte de cómo leo lo que cada persona quiere de un lugar.</span>
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <span data-lang="EN" class="lang-active">Is it walking-heavy? Can I bring kids? What about reduced mobility?</span>
+            <span data-lang="PT">Tem muita caminhada? Posso levar crianças? E mobilidade reduzida?</span>
+            <span data-lang="ES">¿Hay mucha caminata? ¿Puedo llevar niños? ¿Y movilidad reducida?</span>
+          </h3>
+          <p class="faq-a">
+            <span data-lang="EN" class="lang-active">Most routes involve walking — Centro and Santa Teresa especially have hills and uneven paving. If anyone in your group has limited mobility, tell me when we plan and I'll build a route that works (more car, less walking, flatter neighborhoods). Kids are welcome on all the day routes — just let me know ages so I pace it well. Night Life isn't for kids.</span>
+            <span data-lang="PT">A maioria dos roteiros envolve caminhada — Centro e Santa Teresa, em especial, têm ladeiras e calçadas irregulares. Se alguém do grupo tem mobilidade limitada, me avisa na hora de planejar e eu monto uma rota que funcione (mais carro, menos caminhada, bairros mais planos). Crianças são bem-vindas em todos os roteiros de dia — só me diz as idades pra eu acertar o ritmo. Noite não é pra criança.</span>
+            <span data-lang="ES">La mayoría de las rutas implica caminar — Centro y Santa Teresa, sobre todo, tienen subidas y veredas irregulares. Si alguien del grupo tiene movilidad reducida, avísame al planear y armo una ruta que funcione (más auto, menos caminata, barrios más planos). Los niños son bienvenidos en todas las rutas de día — sólo dime las edades para ajustar el ritmo. La ruta de noche no es para niños.</span>
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">
+            <span data-lang="EN" class="lang-active">What should I bring? Should I tip?</span>
+            <span data-lang="PT">O que devo levar? Devo dar gorjeta?</span>
+            <span data-lang="ES">¿Qué debo llevar? ¿Debo dar propina?</span>
+          </h3>
+          <p class="faq-a">
+            <span data-lang="EN" class="lang-active">Comfortable walking shoes, a sun hat, a water bottle, some cash in reais for snacks and small entrance fees, and your phone with WhatsApp on so you can reach me. Tipping isn't a strong cultural norm in Brazil and isn't expected — but if a tour goes well and you'd like to leave something for the driver or me, it's always appreciated.</span>
+            <span data-lang="PT">Tênis confortável, chapéu de sol, garrafinha d'água, um trocado em reais pra lanches e pequenas entradas, e o celular com WhatsApp pra você me alcançar. Gorjeta não é um costume forte no Brasil e não é esperada — mas se o tour vai bem e você quer deixar algo pro motorista ou pra mim, é sempre bem-vindo.</span>
+            <span data-lang="ES">Zapatos cómodos para caminar, sombrero, botella de agua, algo de efectivo en reales para snacks y entradas pequeñas, y tu teléfono con WhatsApp para alcanzarme. La propina no es una costumbre fuerte en Brasil y no se espera — pero si el tour va bien y quieres dejar algo para el conductor o para mí, siempre se agradece.</span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave: faq → proof -->
   <div class="wave-divider" aria-hidden="true" style="background:#1B4830;">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none" height="80"><path d="M0,50 C360,10 900,80 1440,20 L1440,80 L0,80 Z" fill="#FDFAF3"/></svg>
   </div>
@@ -1479,6 +1927,40 @@
   ════════════════════════════════════════════ -->
   <section class="proof section-pad" aria-labelledby="proof-heading">
     <div class="container">
+
+      <div class="trust-strip" aria-label="Trusted by">
+        <div class="trust-item trust-item-multi">
+          <span class="trust-label">
+            <span data-lang="EN" class="lang-active">Featured by</span>
+            <span data-lang="PT">Indicada por</span>
+            <span data-lang="ES">Recomendada por</span>
+          </span>
+          <a class="trust-link" href="https://www.voyageursdumonde.fr/" target="_blank" rel="noopener noreferrer" aria-label="Voyageurs du Monde">
+            <span class="trust-name trust-vdm">Voyageurs du Monde</span>
+          </a>
+          <span class="trust-sep" aria-hidden="true">·</span>
+          <a class="trust-link" href="https://www.dehouche.com" target="_blank" rel="noopener noreferrer" aria-label="Dehouche">
+            <span class="trust-name">Dehouche</span>
+          </a>
+          <span class="trust-sep" aria-hidden="true">·</span>
+          <a class="trust-link" href="https://viajerosmodoavion.com" target="_blank" rel="noopener noreferrer" aria-label="Viajeros Modo Avión">
+            <span class="trust-name">Viajeros Modo Avión</span>
+          </a>
+          <span class="trust-sep" aria-hidden="true">·</span>
+          <a class="trust-link" href="https://www.litmediaproductions.com" target="_blank" rel="noopener noreferrer" aria-label="LIT Media Productions">
+            <span class="trust-name">LIT Media Productions</span>
+          </a>
+        </div>
+        <a class="trust-link trust-item" href="https://www.tripadvisor.com/Attraction_Review-g303506-d34345028-Reviews-Key_Tours_Rio-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html" target="_blank" rel="noopener noreferrer" aria-label="Key Tours Rio on Tripadvisor">
+          <svg class="trust-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.006 4.295c-2.67 0-5.338.784-7.645 2.353H0l1.963 2.135a5.997 5.997 0 0 0 4.04 10.43 5.976 5.976 0 0 0 4.075-1.6L12 19.705l1.922-2.09a5.972 5.972 0 0 0 4.072 1.598 6 6 0 0 0 6-5.998 5.99 5.99 0 0 0-1.957-4.432L24 6.648h-4.35a13.573 13.573 0 0 0-7.644-2.353zM12 6.255c1.531 0 3.011.245 4.395.7C13.985 7.882 12 10.554 12 13.685c0-3.13-1.986-5.803-4.396-6.73A14.07 14.07 0 0 1 12 6.256zM6.004 9.157a4.05 4.05 0 0 1 4.052 4.052 4.05 4.05 0 0 1-4.052 4.05 4.05 4.05 0 0 1-4.05-4.05 4.05 4.05 0 0 1 4.05-4.052zm11.992 0a4.05 4.05 0 0 1 4.05 4.052 4.05 4.05 0 0 1-4.05 4.05 4.05 4.05 0 0 1-4.052-4.05 4.05 4.05 0 0 1 4.052-4.052zm-11.992 1.93a2.122 2.122 0 0 0-2.121 2.122 2.12 2.12 0 0 0 2.121 2.12 2.12 2.12 0 0 0 2.12-2.12 2.122 2.122 0 0 0-2.12-2.122zm11.992 0a2.122 2.122 0 0 0-2.122 2.122 2.12 2.12 0 0 0 2.122 2.12 2.12 2.12 0 0 0 2.12-2.12 2.122 2.122 0 0 0-2.12-2.122zm-11.992.512a1.61 1.61 0 0 1 1.61 1.61 1.61 1.61 0 0 1-1.61 1.61 1.61 1.61 0 0 1-1.61-1.61 1.61 1.61 0 0 1 1.61-1.61zm11.992 0a1.61 1.61 0 0 1 1.61 1.61 1.61 1.61 0 0 1-1.61 1.61 1.61 1.61 0 0 1-1.61-1.61 1.61 1.61 0 0 1 1.61-1.61z"/></svg>
+          <span class="trust-name">
+            <span data-lang="EN" class="lang-active">Listed on Tripadvisor</span>
+            <span data-lang="PT">Listada no Tripadvisor</span>
+            <span data-lang="ES">Listada en Tripadvisor</span>
+          </span>
+        </a>
+      </div>
+
       <span class="journal-label" style="text-align:center;display:block;">Traveler Notes</span>
       <h2 class="section-heading section-heading-center" id="proof-heading" style="margin-bottom:var(--space-12);">
         <span data-lang="EN" class="lang-active">What they sent after.</span>
@@ -1742,6 +2224,19 @@
           fetch(CLICK_LOG_URL, { method: 'POST', body: body, keepalive: true, mode: 'no-cors' });
         }
       } catch (e) { /* fire-and-forget */ }
+    }
+
+    function loadVideo() {
+      const wrap = document.getElementById('videoWrapper');
+      if (!wrap) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/EAYVSn5Shw0?rel=0&autoplay=1';
+      iframe.title = 'Santa Teresa, Rio de Janeiro — Key Tours';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      wrap.innerHTML = '';
+      wrap.appendChild(iframe);
     }
 
     function openWhatsApp() {
