@@ -1,5 +1,16 @@
 # Edit Log — Key Tours
 
+## 2026-05-01 — Stack hero microline partner names vertically (one per line)
+**Request:** "hero section a bit crowded" → "just move each collaborator to its own line"
+**Changed:** index.html (CSS only)
+**What changed:**
+- `.hero-trust` now uses `display: flex; flex-direction: column; align-items: center;` so the label + each partner anchor stack vertically and remain centered
+- `.hero-trust-label` becomes block with bottom margin instead of inline with right margin
+- `.hero-trust a` becomes `display: block` with small vertical padding (touch target spacing)
+- `.hero-trust-sep` middots set to `display: none` (HTML markup preserved for revertability — just invisible)
+- `line-height` tightened from 1.7 → 1.5 since separator spacing is no longer needed
+**Reason / context:** On 375px iPhone SE viewport, the 4-partner hero microline was wrapping mid-name across 3 lines (e.g. "...Voyageurs du / Monde Dehouche Viajeros / Modo Avión LIT Media Productions"). Stacking each on its own line trades ~1 extra line of vertical space for clean readability — no more mid-word wraps. Also improves desktop hierarchy: partner names are scannable as a list rather than a comma-soup.
+
 ## 2026-05-01 — Make partnership names clickable inside the new FAQ answer
 **Request:** "for what's your tour guide experience make mentions clickable"
 **Changed:** index.html (CSS + FAQ HTML)

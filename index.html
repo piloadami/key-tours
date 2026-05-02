@@ -422,29 +422,35 @@
       font-weight: 400;
       color: rgba(255,253,249,0.7);
       letter-spacing: 0.02em;
-      line-height: 1.7;
+      line-height: 1.5;
       max-width: 620px;
       margin-left: auto;
       margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
     .hero-trust .hero-trust-label {
       color: rgba(255,253,249,0.55);
-      margin-right: 0.4em;
+      margin-bottom: var(--space-2);
+      display: block;
     }
     .hero-trust a {
+      display: block;
       color: rgba(255,253,249,0.92);
       text-decoration: underline;
       text-decoration-color: rgba(255,253,249,0.25);
       text-underline-offset: 3px;
       transition: color 0.2s, text-decoration-color 0.2s;
+      padding: 2px 0;
     }
     .hero-trust a:hover {
       color: var(--color-accent-light);
       text-decoration-color: var(--color-accent-light);
     }
     .hero-trust .hero-trust-sep {
-      margin: 0 0.4em;
-      color: rgba(255,253,249,0.4);
+      display: none;
     }
 
     /* Hero stamp badge */
