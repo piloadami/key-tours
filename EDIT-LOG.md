@@ -1,5 +1,17 @@
 # Edit Log — Key Tours
 
+## 2026-05-23 — Add "Private Tour" keyword to all 6 tour page titles (SEO T4)
+**Request:** SEO audit T4 — add "private tour" keyword to title tags for ranking signal
+**Changed:** tour-centro.html, tour-copa.html, tour-mototaxi.html, tour-music.html, tour-nature.html, tour-nightlife.html
+**What changed:**
+- tour-centro: `City Centre & Santa Teresa — Key Tours Rio` → `Private Tour: City Centre & Santa Teresa | Key Tours Rio`
+- tour-copa: `Copacabana — Key Tours Rio` → `Private Tour: Copacabana | Key Tours Rio`
+- tour-mototaxi: `Rio on Two Wheels — Key Tours Rio` → `Private Tour: Rio on Two Wheels | Key Tours Rio`
+- tour-music: `Rio's Musical Soul — Key Tours Rio` → `Private Tour: Rio's Musical Soul | Key Tours Rio`
+- tour-nature: `Rio Nature — Key Tours Rio` → `Private Tour: Rio Nature & Tijuca Forest | Key Tours Rio`
+- tour-nightlife: `Night Life — Key Tours Rio` → `Private Tour: Rio Nightlife & Lapa | Key Tours Rio`
+**Reason / context:** "Private tour Rio de Janeiro" has meaningful search volume. Title tag is Google's highest-weight on-page signal. Also normalised separator from `—` to `|` (industry standard for title tags).
+
 ## 2026-05-23 — Fix empty alt on YouTube thumbnail (SEO)
 **Request:** SEO audit T9 — empty alt attribute on video poster image
 **Changed:** index.html
