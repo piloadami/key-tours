@@ -1,5 +1,12 @@
 # Edit Log — Key Tours
 
+## 2026-05-23 — Fix empty alt on YouTube thumbnail (SEO)
+**Request:** SEO audit T9 — empty alt attribute on video poster image
+**Changed:** index.html
+**What changed:**
+- `img` at line 1464 (YouTube thumbnail `EAYVSn5Shw0/maxresdefault.jpg`): `alt=""` → `alt="Key Tours Rio de Janeiro — video preview"`
+**Reason / context:** Empty alt on a decorative-but-meaningful video poster thumbnail. Image is inside a clickable play button for the Key Tours promo video — descriptive alt improves accessibility and removes an SEO warning.
+
 ## 2026-05-01 — Stack hero microline partner names vertically (one per line)
 **Request:** "hero section a bit crowded" → "just move each collaborator to its own line"
 **Changed:** index.html (CSS only)
