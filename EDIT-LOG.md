@@ -1,5 +1,14 @@
 # Edit Log — Key Tours
 
+## 2026-05-23 — Add BreadcrumbList JSON-LD to all 6 tour pages (SEO T2)
+**Request:** SEO audit T2 — add BreadcrumbList structured data so Google shows breadcrumb trail in search results
+**Changed:** tour-centro.html, tour-copa.html, tour-mototaxi.html, tour-music.html, tour-nature.html, tour-nightlife.html
+**What changed:**
+- Added a second `<script type="application/ld+json">` block after the existing TouristTrip block on each page
+- Structure: Key Tours Rio (pos 1) › {Tour Name} (pos 2)
+- Invisible to visitors — JSON-LD only, no visible page change
+**Reason / context:** BreadcrumbList tells Google how pages relate hierarchically, producing a breadcrumb trail in SERP snippets beneath the title. Increases result visual size and signals site structure.
+
 ## 2026-05-23 — Add "Private Tour" keyword to all 6 tour page titles (SEO T4)
 **Request:** SEO audit T4 — add "private tour" keyword to title tags for ranking signal
 **Changed:** tour-centro.html, tour-copa.html, tour-mototaxi.html, tour-music.html, tour-nature.html, tour-nightlife.html
