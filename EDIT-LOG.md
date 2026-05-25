@@ -1,5 +1,15 @@
 # Edit Log — Key Tours
 
+## 2026-05-25 — Add aggregateRating to TouristTrip schema on all 6 tour pages (SEO)
+**Request:** SEO audit T4 — deploy aggregateRating now that GBP has 4 reviews at 5.0 stars
+**Changed:** tour-centro.html, tour-copa.html, tour-mototaxi.html, tour-music.html, tour-nature.html, tour-nightlife.html
+**What changed:**
+- Added `aggregateRating` block inside TouristTrip JSON-LD on each page
+- Values: ratingValue 5.0, reviewCount 4, bestRating 5, worstRating 1
+- Source: Google Business Profile (verified 2026-04-25, 4 reviews as of 2026-05-25)
+**Reason / context:** aggregateRating enables Google star snippets in SERP (⭐⭐⭐⭐⭐ visible under the page title). Was gated until first review existed. GBP now has 4 reviews at 5.0 — unblocked.
+**Note:** reviewCount must be updated manually whenever new reviews arrive.
+
 ## 2026-05-23 — Add BreadcrumbList JSON-LD to all 6 tour pages (SEO T2)
 **Request:** SEO audit T2 — add BreadcrumbList structured data so Google shows breadcrumb trail in search results
 **Changed:** tour-centro.html, tour-copa.html, tour-mototaxi.html, tour-music.html, tour-nature.html, tour-nightlife.html
