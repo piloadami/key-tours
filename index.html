@@ -2425,8 +2425,8 @@
         {t:"Thank",      s:48.80,e:49.36},{t:"you.",      s:49.36,e:49.66}
       ];
 
-      // PT/ES: sentence-level (no per-word timing available for translations)
-      var PT_SUBS = [
+      // PT/ES: sentence groups — words will be split and timed evenly within each sentence window
+      var PT_SENTS = [
         {s:1.14, e:5.24, t:"Keyla, muito obrigada por um dia tão maravilhoso."},
         {s:5.60, e:9.26, t:"Foi uma experiência incrível, sabe,"},
         {s:9.56, e:15.00,t:"que eu provavelmente não conseguiria em nenhum outro lugar."},
@@ -2437,7 +2437,7 @@
         {s:38.84,e:43.62,t:"E espero que da próxima vez que eu vier ao Rio, você esteja disponível."},
         {s:44.56,e:49.66,t:"Obrigada. Foi simplesmente... Obrigada."}
       ];
-      var ES_SUBS = [
+      var ES_SENTS = [
         {s:1.14, e:5.24, t:"Keyla, muchas gracias por un día tan maravilloso."},
         {s:5.60, e:9.26, t:"Fue una experiencia increíble, sabes,"},
         {s:9.56, e:15.00,t:"que probablemente no podría haber conseguido en ningún otro lugar."},
@@ -2449,46 +2449,59 @@
         {s:44.56,e:49.66,t:"Gracias. Fue simplemente... Gracias."}
       ];
 
-      // Build EN phrases: groups of 3 words
-      var PHRASE_SIZE = 3;
-      var EN_PHRASES = [];
-      for (var i = 0; i < EN_WORDS.length; i += PHRASE_SIZE) {
-        var chunk = EN_WORDS.slice(i, i + PHRASE_SIZE);
-        EN_PHRASES.push({ words: chunk, s: chunk[0].s, e: chunk[chunk.length - 1].e });
+      // Distribute sentence timing evenly across its words
+      function sentencesToWords(sents) {
+        var out = [];
+        for (var i = 0; i < sents.length; i++) {
+          var sent = sents[i], ws = sent.t.split(' ');
+          var dur = (sent.e - sent.s) / ws.length;
+          for (var j = 0; j < ws.length; j++) {
+            out.push({ t: ws[j], s: sent.s + j * dur, e: sent.s + (j + 1) * dur });
+          }
+        }
+        return out;
       }
+
+      // Group any word array into 3-word phrases
+      var PHRASE_SIZE = 3;
+      function buildPhrases(words) {
+        var phrases = [];
+        for (var i = 0; i < words.length; i += PHRASE_SIZE) {
+          var chunk = words.slice(i, i + PHRASE_SIZE);
+          phrases.push({ words: chunk, s: chunk[0].s, e: chunk[chunk.length - 1].e });
+        }
+        return phrases;
+      }
+
+      var PHRASES = {
+        EN: buildPhrases(EN_WORDS),
+        PT: buildPhrases(sentencesToWords(PT_SENTS)),
+        ES: buildPhrases(sentencesToWords(ES_SENTS))
+      };
 
       var video   = document.getElementById('testimonialVideo');
       var overlay = document.getElementById('captionOverlay');
       if (!video || !overlay) return;
 
       function updateCaption() {
-        var t    = video.currentTime;
-        var lang = localStorage.getItem('keytours-lang') || 'EN';
-
-        if (lang === 'EN') {
-          var phrase = null;
-          for (var i = 0; i < EN_PHRASES.length; i++) {
-            if (t >= EN_PHRASES[i].s && t <= EN_PHRASES[i].e + 0.15) { phrase = EN_PHRASES[i]; break; }
-          }
-          if (!phrase) { overlay.innerHTML = ''; return; }
-          var html = '<div class="caption-pill">';
-          for (var j = 0; j < phrase.words.length; j++) {
-            var w = phrase.words[j];
-            var isActive = t >= w.s && t <= w.e + 0.05;
-            var isPast   = t > w.e + 0.05;
-            var cls = isActive ? ' cap-active' : (isPast ? ' cap-past' : '');
-            html += '<span class="cap-word' + cls + '">' + w.t + '</span>';
-          }
-          html += '</div>';
-          overlay.innerHTML = html;
-        } else {
-          var subs = lang === 'PT' ? PT_SUBS : ES_SUBS;
-          var hit = null;
-          for (var i = 0; i < subs.length; i++) {
-            if (t >= subs[i].s && t <= subs[i].e) { hit = subs[i]; break; }
-          }
-          overlay.innerHTML = hit ? '<div class="caption-pill"><span class="cap-word">' + hit.t + '</span></div>' : '';
+        var t       = video.currentTime;
+        var lang    = localStorage.getItem('keytours-lang') || 'EN';
+        var phrases = PHRASES[lang] || PHRASES.EN;
+        var phrase  = null;
+        for (var i = 0; i < phrases.length; i++) {
+          if (t >= phrases[i].s && t <= phrases[i].e + 0.15) { phrase = phrases[i]; break; }
         }
+        if (!phrase) { overlay.innerHTML = ''; return; }
+        var html = '<div class="caption-pill">';
+        for (var j = 0; j < phrase.words.length; j++) {
+          var w = phrase.words[j];
+          var isActive = t >= w.s && t <= w.e + 0.05;
+          var isPast   = t > w.e + 0.05;
+          var cls = isActive ? ' cap-active' : (isPast ? ' cap-past' : '');
+          html += '<span class="cap-word' + cls + '">' + w.t + '</span>';
+        }
+        html += '</div>';
+        overlay.innerHTML = html;
       }
 
       video.addEventListener('timeupdate', updateCaption);
