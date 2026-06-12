@@ -161,7 +161,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500;700&family=Poppins:wght@900&display=swap" rel="stylesheet">
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -960,22 +960,41 @@
     }
     .video-caption-overlay {
       position: absolute;
-      bottom: 15%;
+      bottom: 12%;
       left: 0; right: 0;
-      text-align: center;
-      padding: 0 14px;
+      display: flex;
+      justify-content: center;
+      padding: 0 8px;
       pointer-events: none;
       z-index: 2;
     }
-    .video-caption-overlay span {
-      font-family: 'Space Grotesk', var(--font-body);
-      font-size: clamp(0.78rem, 4vw, 0.95rem);
-      font-weight: 700;
-      color: #ffffff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.85);
-      line-height: 1.35;
+    .caption-pill {
+      display: flex;
+      gap: clamp(10px, 2.5vw, 20px);
+      align-items: center;
+      background: rgba(0,0,0,0.68);
+      border-radius: 14px;
+      padding: clamp(7px,1.8vw,12px) clamp(14px,3.5vw,28px);
+    }
+    .cap-word {
+      font-family: 'Poppins', var(--font-body);
+      font-size: clamp(0.72rem, 3.8vw, 1rem);
+      font-weight: 900;
+      color: #fff;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.8);
+      text-shadow: 1px 2px 3px rgba(0,0,0,0.85);
       display: inline-block;
-      max-width: 100%;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+    .cap-word.cap-active {
+      color: #FFE135;
+      transform: scale(1.15);
+      transform-origin: center bottom;
+      text-shadow: 1px 2px 3px rgba(0,0,0,0.85), 0 0 18px rgba(255,225,53,0.5);
+    }
+    .cap-word.cap-past {
+      color: rgba(255,255,255,0.42);
     }
     .video-wrapper iframe {
       width: 100%;
@@ -2368,54 +2387,110 @@
 
     // ── Video captions ────────────────────────────
     (function initCaptions() {
-      var CAPS = {
-        EN: [
-          {s:1.14,  e:5.24,  t:"Kayla, thank you so much for such a wonderful day."},
-          {s:5.60,  e:9.26,  t:"This was an amazing experience that I feel like,"},
-          {s:9.56,  e:15.00, t:"you know, I probably could not have gotten anywhere else with anyone else."},
-          {s:15.26, e:22.98, t:"You've really shown me your Rio and I really understand Rio,"},
-          {s:23.90, e:27.92, t:"Brazilian culture, and just your community much better."},
-          {s:27.92, e:35.38, t:"And it's made me fall more in love with Brazil than what I already was before."},
-          {s:35.78, e:38.68, t:"So thank you so much. I really appreciate it."},
-          {s:38.84, e:43.62, t:"And hopefully next time I come to Rio, you'll be available and we can do this again soon."},
-          {s:44.56, e:49.66, t:"Thank you. That was just... Thank you."}
-        ],
-        PT: [
-          {s:1.14,  e:5.24,  t:"Keyla, muito obrigada por um dia tão maravilhoso."},
-          {s:5.60,  e:9.26,  t:"Foi uma experiência incrível, sabe,"},
-          {s:9.56,  e:15.00, t:"que eu provavelmente não conseguiria em nenhum outro lugar."},
-          {s:15.26, e:22.98, t:"Você realmente me mostrou o seu Rio e eu entendo Rio,"},
-          {s:23.90, e:27.92, t:"a cultura brasileira, e sua comunidade muito melhor."},
-          {s:27.92, e:35.38, t:"E isso me fez me apaixonar ainda mais pelo Brasil do que eu já estava."},
-          {s:35.78, e:38.68, t:"Então, muito obrigada. Eu realmente agradeço."},
-          {s:38.84, e:43.62, t:"E espero que da próxima vez que eu vier ao Rio, você esteja disponível e possamos fazer isso de novo."},
-          {s:44.56, e:49.66, t:"Obrigada. Foi simplesmente... Obrigada."}
-        ],
-        ES: [
-          {s:1.14,  e:5.24,  t:"Keyla, muchas gracias por un día tan maravilloso."},
-          {s:5.60,  e:9.26,  t:"Fue una experiencia increíble, sabes,"},
-          {s:9.56,  e:15.00, t:"que probablemente no podría haber conseguido en ningún otro lugar."},
-          {s:15.26, e:22.98, t:"Realmente me has mostrado tu Río y entiendo Río,"},
-          {s:23.90, e:27.92, t:"la cultura brasileña, y tu comunidad mucho mejor."},
-          {s:27.92, e:35.38, t:"Y eso me ha hecho enamorarme aún más de Brasil de lo que ya estaba."},
-          {s:35.78, e:38.68, t:"Así que muchas gracias. Lo aprecio muchísimo."},
-          {s:38.84, e:43.62, t:"Y espero que la próxima vez que venga a Río, estés disponible y podamos hacer esto de nuevo."},
-          {s:44.56, e:49.66, t:"Gracias. Fue simplemente... Gracias."}
-        ]
-      };
+      // EN: word-level timing from Whisper transcript — 3-word karaoke phrases
+      var EN_WORDS = [
+        {t:"Kayla,",     s:1.14, e:1.94},{t:"thank",      s:2.30, e:2.42},{t:"you",        s:2.42, e:2.60},
+        {t:"so",         s:2.60, e:2.88},{t:"much",       s:2.88, e:3.40},{t:"for",        s:3.40, e:3.84},
+        {t:"such",       s:3.84, e:4.20},{t:"a",          s:4.20, e:4.34},{t:"wonderful",  s:4.34, e:4.74},
+        {t:"day.",       s:4.74, e:5.24},{t:"This",       s:5.60, e:6.10},{t:"was",        s:6.10, e:6.44},
+        {t:"an",         s:6.44, e:7.00},{t:"amazing",    s:7.00, e:7.46},{t:"experience", s:7.46, e:8.12},
+        {t:"that",       s:8.12, e:8.44},{t:"I",          s:8.44, e:8.54},{t:"feel",       s:8.54, e:8.82},
+        {t:"like,",      s:8.82, e:9.26},{t:"you",        s:9.56, e:10.20},{t:"know,",     s:10.20,e:10.30},
+        {t:"I",          s:10.44,e:10.50},{t:"probably",  s:10.50,e:11.08},{t:"could",     s:11.08,e:11.68},
+        {t:"not",        s:11.68,e:11.88},{t:"have",      s:11.88,e:12.10},{t:"gotten",    s:12.10,e:12.36},
+        {t:"anywhere",   s:12.36,e:12.82},{t:"else",      s:12.82,e:13.32},{t:"with",      s:13.32,e:14.16},
+        {t:"anyone",     s:14.16,e:14.54},{t:"else.",     s:14.54,e:15.00},{t:"You've",    s:15.26,e:15.66},
+        {t:"really",     s:15.66,e:15.88},{t:"shown",     s:15.88,e:16.20},{t:"me",        s:16.20,e:16.60},
+        {t:"your",       s:16.60,e:17.96},{t:"Rio",       s:17.96,e:18.44},{t:"and",       s:18.44,e:19.36},
+        {t:"I",          s:19.36,e:20.48},{t:"really",    s:20.48,e:20.92},{t:"understand",s:20.92,e:21.52},
+        {t:"Rio,",       s:21.52,e:22.98},{t:"Brazilian", s:23.90,e:24.22},{t:"culture,",  s:24.22,e:24.90},
+        {t:"and",        s:25.36,e:26.14},{t:"just",      s:26.14,e:26.44},{t:"your",      s:26.44,e:26.80},
+        {t:"community",  s:26.80,e:27.28},{t:"much",      s:27.28,e:27.54},{t:"better.",   s:27.54,e:27.92},
+        {t:"And",        s:27.92,e:28.92},{t:"it's",      s:28.92,e:29.30},{t:"made",      s:29.30,e:29.46},
+        {t:"me",         s:29.46,e:29.62},{t:"fall",      s:29.62,e:29.96},{t:"more",      s:29.96,e:30.34},
+        {t:"in",         s:30.34,e:30.50},{t:"love",      s:30.50,e:30.74},{t:"with",      s:30.74,e:31.80},
+        {t:"Brazil",     s:31.80,e:32.26},{t:"than",      s:32.26,e:32.86},{t:"what",      s:32.86,e:34.06},
+        {t:"I",          s:34.06,e:34.22},{t:"already",   s:34.22,e:34.76},{t:"was",       s:34.76,e:35.04},
+        {t:"before.",    s:35.04,e:35.38},{t:"So",        s:35.78,e:35.84},{t:"thank",     s:35.84,e:36.04},
+        {t:"you",        s:36.04,e:36.24},{t:"so",        s:36.24,e:36.42},{t:"much.",     s:36.42,e:36.80},
+        {t:"I",          s:37.04,e:37.52},{t:"really",    s:37.52,e:37.80},{t:"appreciate",s:37.80,e:38.24},
+        {t:"it.",        s:38.24,e:38.68},{t:"And",       s:38.84,e:39.18},{t:"hopefully", s:39.18,e:39.60},
+        {t:"next",       s:39.60,e:40.50},{t:"time",      s:40.50,e:40.68},{t:"I",         s:40.68,e:40.80},
+        {t:"come",       s:40.80,e:40.98},{t:"to",        s:40.98,e:41.16},{t:"Rio,",      s:41.16,e:41.48},
+        {t:"you'll",     s:41.76,e:41.92},{t:"be",        s:41.92,e:42.02},{t:"available", s:42.02,e:42.44},
+        {t:"and",        s:42.44,e:42.64},{t:"we",        s:42.64,e:42.70},{t:"can",       s:42.70,e:42.82},
+        {t:"do",         s:42.82,e:42.96},{t:"this",      s:42.96,e:43.14},{t:"again",     s:43.14,e:43.34},
+        {t:"soon.",      s:43.34,e:43.62},{t:"Thank",     s:44.56,e:44.94},{t:"you.",      s:44.94,e:45.38},
+        {t:"That",       s:46.32,e:46.60},{t:"was",       s:46.60,e:46.78},{t:"just...",   s:46.78,e:47.48},
+        {t:"Thank",      s:48.80,e:49.36},{t:"you.",      s:49.36,e:49.66}
+      ];
+
+      // PT/ES: sentence-level (no per-word timing available for translations)
+      var PT_SUBS = [
+        {s:1.14, e:5.24, t:"Keyla, muito obrigada por um dia tão maravilhoso."},
+        {s:5.60, e:9.26, t:"Foi uma experiência incrível, sabe,"},
+        {s:9.56, e:15.00,t:"que eu provavelmente não conseguiria em nenhum outro lugar."},
+        {s:15.26,e:22.98,t:"Você realmente me mostrou o seu Rio e eu entendo Rio,"},
+        {s:23.90,e:27.92,t:"a cultura brasileira, e sua comunidade muito melhor."},
+        {s:27.92,e:35.38,t:"E isso me fez me apaixonar ainda mais pelo Brasil do que eu já estava."},
+        {s:35.78,e:38.68,t:"Então, muito obrigada. Eu realmente agradeço."},
+        {s:38.84,e:43.62,t:"E espero que da próxima vez que eu vier ao Rio, você esteja disponível."},
+        {s:44.56,e:49.66,t:"Obrigada. Foi simplesmente... Obrigada."}
+      ];
+      var ES_SUBS = [
+        {s:1.14, e:5.24, t:"Keyla, muchas gracias por un día tan maravilloso."},
+        {s:5.60, e:9.26, t:"Fue una experiencia increíble, sabes,"},
+        {s:9.56, e:15.00,t:"que probablemente no podría haber conseguido en ningún otro lugar."},
+        {s:15.26,e:22.98,t:"Realmente me has mostrado tu Río y entiendo Río,"},
+        {s:23.90,e:27.92,t:"la cultura brasileña, y tu comunidad mucho mejor."},
+        {s:27.92,e:35.38,t:"Y eso me ha hecho enamorarme aún más de Brasil de lo que ya estaba."},
+        {s:35.78,e:38.68,t:"Así que muchas gracias. Lo aprecio muchísimo."},
+        {s:38.84,e:43.62,t:"Y espero que la próxima vez que venga a Río, estés disponible."},
+        {s:44.56,e:49.66,t:"Gracias. Fue simplemente... Gracias."}
+      ];
+
+      // Build EN phrases: groups of 3 words
+      var PHRASE_SIZE = 3;
+      var EN_PHRASES = [];
+      for (var i = 0; i < EN_WORDS.length; i += PHRASE_SIZE) {
+        var chunk = EN_WORDS.slice(i, i + PHRASE_SIZE);
+        EN_PHRASES.push({ words: chunk, s: chunk[0].s, e: chunk[chunk.length - 1].e });
+      }
+
       var video   = document.getElementById('testimonialVideo');
       var overlay = document.getElementById('captionOverlay');
       if (!video || !overlay) return;
+
       function updateCaption() {
         var t    = video.currentTime;
         var lang = localStorage.getItem('keytours-lang') || 'EN';
-        var caps = CAPS[lang] || CAPS.EN;
-        var hit  = null;
-        for (var i = 0; i < caps.length; i++) {
-          if (t >= caps[i].s && t <= caps[i].e) { hit = caps[i]; break; }
+
+        if (lang === 'EN') {
+          var phrase = null;
+          for (var i = 0; i < EN_PHRASES.length; i++) {
+            if (t >= EN_PHRASES[i].s && t <= EN_PHRASES[i].e + 0.15) { phrase = EN_PHRASES[i]; break; }
+          }
+          if (!phrase) { overlay.innerHTML = ''; return; }
+          var html = '<div class="caption-pill">';
+          for (var j = 0; j < phrase.words.length; j++) {
+            var w = phrase.words[j];
+            var isActive = t >= w.s && t <= w.e + 0.05;
+            var isPast   = t > w.e + 0.05;
+            var cls = isActive ? ' cap-active' : (isPast ? ' cap-past' : '');
+            html += '<span class="cap-word' + cls + '">' + w.t + '</span>';
+          }
+          html += '</div>';
+          overlay.innerHTML = html;
+        } else {
+          var subs = lang === 'PT' ? PT_SUBS : ES_SUBS;
+          var hit = null;
+          for (var i = 0; i < subs.length; i++) {
+            if (t >= subs[i].s && t <= subs[i].e) { hit = subs[i]; break; }
+          }
+          overlay.innerHTML = hit ? '<div class="caption-pill"><span class="cap-word">' + hit.t + '</span></div>' : '';
         }
-        overlay.innerHTML = hit ? '<span>' + hit.t + '</span>' : '';
       }
+
       video.addEventListener('timeupdate', updateCaption);
       video.addEventListener('ended', function() { overlay.innerHTML = ''; });
     })();
