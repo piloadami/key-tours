@@ -161,7 +161,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@300;400;500;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -957,6 +957,25 @@
       font-weight: 600;
       color: var(--color-text);
       font-size: var(--text-base);
+    }
+    .video-caption-overlay {
+      position: absolute;
+      bottom: 15%;
+      left: 0; right: 0;
+      text-align: center;
+      padding: 0 14px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .video-caption-overlay span {
+      font-family: 'Space Grotesk', var(--font-body);
+      font-size: clamp(0.78rem, 4vw, 0.95rem);
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+      line-height: 1.35;
+      display: inline-block;
+      max-width: 100%;
     }
     .video-wrapper iframe {
       width: 100%;
@@ -2050,11 +2069,12 @@
         </span>
         <div class="video-testimonial-frame">
           <div class="video-wrapper video-wrapper--portrait">
-            <video controls preload="none"
+            <video id="testimonialVideo" controls preload="none"
                    poster="./images/KT-25-Review-poster.jpg"
                    style="width:100%;height:100%;object-fit:cover;display:block;">
               <source src="./images/KT-25-Review-web.mp4" type="video/mp4">
             </video>
+            <div class="video-caption-overlay" id="captionOverlay" aria-live="polite" aria-atomic="true"></div>
           </div>
           <p class="video-testimonial-attr">
             <strong>Alexandra Pernudi</strong>
@@ -2345,6 +2365,60 @@
 
       window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
     }
+
+    // ── Video captions ────────────────────────────
+    (function initCaptions() {
+      var CAPS = {
+        EN: [
+          {s:1.14,  e:5.24,  t:"Kayla, thank you so much for such a wonderful day."},
+          {s:5.60,  e:9.26,  t:"This was an amazing experience that I feel like,"},
+          {s:9.56,  e:15.00, t:"you know, I probably could not have gotten anywhere else with anyone else."},
+          {s:15.26, e:22.98, t:"You've really shown me your Rio and I really understand Rio,"},
+          {s:23.90, e:27.92, t:"Brazilian culture, and just your community much better."},
+          {s:27.92, e:35.38, t:"And it's made me fall more in love with Brazil than what I already was before."},
+          {s:35.78, e:38.68, t:"So thank you so much. I really appreciate it."},
+          {s:38.84, e:43.62, t:"And hopefully next time I come to Rio, you'll be available and we can do this again soon."},
+          {s:44.56, e:49.66, t:"Thank you. That was just... Thank you."}
+        ],
+        PT: [
+          {s:1.14,  e:5.24,  t:"Keyla, muito obrigada por um dia tão maravilhoso."},
+          {s:5.60,  e:9.26,  t:"Foi uma experiência incrível, sabe,"},
+          {s:9.56,  e:15.00, t:"que eu provavelmente não conseguiria em nenhum outro lugar."},
+          {s:15.26, e:22.98, t:"Você realmente me mostrou o seu Rio e eu entendo Rio,"},
+          {s:23.90, e:27.92, t:"a cultura brasileira, e sua comunidade muito melhor."},
+          {s:27.92, e:35.38, t:"E isso me fez me apaixonar ainda mais pelo Brasil do que eu já estava."},
+          {s:35.78, e:38.68, t:"Então, muito obrigada. Eu realmente agradeço."},
+          {s:38.84, e:43.62, t:"E espero que da próxima vez que eu vier ao Rio, você esteja disponível e possamos fazer isso de novo."},
+          {s:44.56, e:49.66, t:"Obrigada. Foi simplesmente... Obrigada."}
+        ],
+        ES: [
+          {s:1.14,  e:5.24,  t:"Keyla, muchas gracias por un día tan maravilloso."},
+          {s:5.60,  e:9.26,  t:"Fue una experiencia increíble, sabes,"},
+          {s:9.56,  e:15.00, t:"que probablemente no podría haber conseguido en ningún otro lugar."},
+          {s:15.26, e:22.98, t:"Realmente me has mostrado tu Río y entiendo Río,"},
+          {s:23.90, e:27.92, t:"la cultura brasileña, y tu comunidad mucho mejor."},
+          {s:27.92, e:35.38, t:"Y eso me ha hecho enamorarme aún más de Brasil de lo que ya estaba."},
+          {s:35.78, e:38.68, t:"Así que muchas gracias. Lo aprecio muchísimo."},
+          {s:38.84, e:43.62, t:"Y espero que la próxima vez que venga a Río, estés disponible y podamos hacer esto de nuevo."},
+          {s:44.56, e:49.66, t:"Gracias. Fue simplemente... Gracias."}
+        ]
+      };
+      var video   = document.getElementById('testimonialVideo');
+      var overlay = document.getElementById('captionOverlay');
+      if (!video || !overlay) return;
+      function updateCaption() {
+        var t    = video.currentTime;
+        var lang = localStorage.getItem('keytours-lang') || 'EN';
+        var caps = CAPS[lang] || CAPS.EN;
+        var hit  = null;
+        for (var i = 0; i < caps.length; i++) {
+          if (t >= caps[i].s && t <= caps[i].e) { hit = caps[i]; break; }
+        }
+        overlay.innerHTML = hit ? '<span>' + hit.t + '</span>' : '';
+      }
+      video.addEventListener('timeupdate', updateCaption);
+      video.addEventListener('ended', function() { overlay.innerHTML = ''; });
+    })();
 
   </script>
 

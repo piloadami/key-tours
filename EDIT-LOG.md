@@ -1,5 +1,16 @@
 # Edit Log — Key Tours
 
+## 2026-06-12 — Add video testimonial section to homepage proof section
+**Request:** add a video testimonial section to homepage
+**Changed:** index.html
+**What changed:**
+- Added `.video-wrapper--portrait` CSS modifier (aspect-ratio 9/16, max-width 320px, 64px play button) near existing `.video-wrapper` block
+- Added video testimonial block after `.proof-inner` closing div, inside `.container` — centered with journal label "Watch / Assista / Mira" above the player
+- Used same click-to-load poster pattern as Santa Teresa video; new `loadTestimonialVideo()` JS function alongside existing `loadVideo()`
+- Video: YouTube Shorts `BxXYMlla5eE`, embed via youtube-nocookie.com
+- Thumbnail: `img.youtube.com/vi/BxXYMlla5eE/maxresdefault.jpg` with `object-fit: cover` for 9:16 crop
+**Reason / context:** User wanted a video testimonial embedded inside the "Traveler Notes" proof section, after the existing text quotes. Chose warm beige inline placement over a standalone dark section to avoid repeating the Santa Teresa video section pattern.
+
 ## 2026-05-25 — Add aggregateRating to TouristTrip schema on all 6 tour pages (SEO)
 **Request:** SEO audit T4 — deploy aggregateRating now that GBP has 4 reviews at 5.0 stars
 **Changed:** tour-centro.html, tour-copa.html, tour-mototaxi.html, tour-music.html, tour-nature.html, tour-nightlife.html
