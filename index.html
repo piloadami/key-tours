@@ -921,6 +921,19 @@
       overflow: hidden;
       position: relative;
     }
+    .video-wrapper--portrait {
+      aspect-ratio: 9/16;
+      max-width: 320px;
+    }
+    .video-wrapper--portrait .video-play {
+      width: 64px;
+      height: 64px;
+    }
+    .video-wrapper--portrait .video-play svg {
+      width: 26px;
+      height: 26px;
+      margin-left: 3px;
+    }
     .video-wrapper iframe {
       width: 100%;
       height: 100%;
@@ -2003,6 +2016,25 @@
           <footer class="proof-attr">— Romes &amp; família, Eurípedes &amp; família</footer>
         </blockquote>
       </div>
+
+      <!-- Video testimonial -->
+      <div style="margin-top:var(--space-16);text-align:center;">
+        <span class="journal-label" style="color:var(--color-accent);display:block;margin-bottom:var(--space-4);">
+          <span data-lang="EN" class="lang-active">Watch</span>
+          <span data-lang="PT">Assista</span>
+          <span data-lang="ES">Mira</span>
+        </span>
+        <div class="video-wrapper video-wrapper--portrait" id="testimonialWrapper">
+          <button type="button" class="video-poster" onclick="loadTestimonialVideo()" aria-label="Play client testimonial video">
+            <img src="https://img.youtube.com/vi/BxXYMlla5eE/maxresdefault.jpg"
+                 alt="Key Tours Rio — client video testimonial" loading="lazy">
+            <span class="video-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,3 21,12 6,21"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -2249,6 +2281,19 @@
       const iframe = document.createElement('iframe');
       iframe.src = 'https://www.youtube-nocookie.com/embed/EAYVSn5Shw0?rel=0&autoplay=1';
       iframe.title = 'Santa Teresa, Rio de Janeiro — Key Tours';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      wrap.innerHTML = '';
+      wrap.appendChild(iframe);
+    }
+
+    function loadTestimonialVideo() {
+      const wrap = document.getElementById('testimonialWrapper');
+      if (!wrap) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/BxXYMlla5eE?rel=0&autoplay=1';
+      iframe.title = 'Key Tours Rio — client testimonial';
       iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
       iframe.allowFullscreen = true;
       iframe.referrerPolicy = 'strict-origin-when-cross-origin';
