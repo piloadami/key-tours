@@ -970,8 +970,12 @@
     }
     .caption-pill {
       display: flex;
-      gap: clamp(10px, 2.5vw, 20px);
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(8px, 2vw, 16px);
       align-items: center;
+      max-width: 94%;
+      text-align: center;
     }
     .cap-word {
       font-family: 'Poppins', var(--font-body);
@@ -982,7 +986,6 @@
       text-shadow: 1px 2px 3px rgba(0,0,0,0.85);
       display: inline-block;
       line-height: 1.25;
-      white-space: nowrap;
     }
     .cap-word.cap-active {
       color: #FFE135;
