@@ -2094,6 +2094,9 @@
               <source src="./images/KT-25-Review-web.mp4" type="video/mp4">
             </video>
             <div class="video-caption-overlay" id="captionOverlay" aria-live="polite" aria-atomic="true"></div>
+          <audio id="bgMusic" loop preload="none">
+            <source src="./images/kt-25-review-music.mp3" type="audio/mpeg">
+          </audio>
           </div>
           <p class="video-testimonial-attr">
             <strong>Alexandra Pernudi</strong>
@@ -2506,6 +2509,16 @@
 
       video.addEventListener('timeupdate', updateCaption);
       video.addEventListener('ended', function() { overlay.innerHTML = ''; });
+
+      // Background music — ducked to 16% (Remotion: audioVolume 0.45 × duck 0.35)
+      var bgMusic = document.getElementById('bgMusic');
+      if (bgMusic) {
+        bgMusic.volume = 0.16;
+        video.addEventListener('play',   function() { bgMusic.currentTime = video.currentTime; bgMusic.play(); });
+        video.addEventListener('pause',  function() { bgMusic.pause(); });
+        video.addEventListener('ended',  function() { bgMusic.pause(); bgMusic.currentTime = 0; });
+        video.addEventListener('seeked', function() { bgMusic.currentTime = video.currentTime; });
+      }
     })();
 
   </script>
